@@ -4,9 +4,9 @@ include_once('includes/Database.php');
 include_once('includes/class.phpmailer.php');
 include_once('includes/class.smtp.php');
 
-define('DB_NAME', 'attachment');
+define('DB_NAME', 'attacho');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '1Billion$$$');
 define('DB_HOST', 'localhost');
 
 /**
@@ -41,4 +41,3 @@ $mail->Username 	=	'YOUR@EMAIL>COM';							// SMTP username
 $mail->Password 	=	'YOUR_PASS';								// SMTP password
 $mail->SMTPSecure	=	'tls';										// Enable encryption, 'ssl' also accepted
 */
-?>
