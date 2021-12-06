@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['name']) && $_SESSION['name'] !== '') {
+	header("location:/attachment.php");
+}
+?>
+
 <!doctype html>
 <html lang="en">
 

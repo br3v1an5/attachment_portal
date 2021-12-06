@@ -42,7 +42,7 @@ function formValidate(formId, formMsg) {
 			if (a[1] == 1) {
 				$(formMsg).html(a[0]);
 				if (typeof (a[2]) != "undefined" && a[2] !== null) {
-					setTimeout(function () { window.location.href = "" + a[2] }, 800);
+					setTimeout(function () { window.location.href = "/attachment.php?" + a[2] }, 800);
 				}
 			} else {
 				$(formMsg).html(a[0]);
