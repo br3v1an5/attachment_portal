@@ -26,7 +26,7 @@ function createTable(array) {
         <td>${element.start_date}</td><td>${element.completion_date}</td><td>${element.remark}</td><td>${element.town}</td>`
         let td = document.createElement('td');
         let img = document.createElement('img');
-        img.src = `https://maps.google.com/maps/api/staticmap?center=${element.latitude},${element.longitude}&zoom=8&size=40x30&sensor=false&key=`;
+        img.src = `https://maps.google.com/maps/api/staticmap?center=${element.latitude},${element.longitude}&zoom=8&size=40x30&sensor=false&key=AIzaSyDsZ-uTLf9mW1pjJb-7cC3BcFPY3Wm5HuM`;
         td.appendChild(img)
         tr.appendChild(td);
         tbody.appendChild(tr);
