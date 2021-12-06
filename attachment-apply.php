@@ -302,10 +302,9 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
 				</div>
 				<!-- error Popup html End -->
 			</div>
-			<div class="footer-wrap pd-20 mb-20 card-box">
-				Designed and Managed By MIS <a href="https://ziwatti.ac.ke" target="_blank">Ziwa Technical Training
-					Institute</a>
-			</div>
+			<?php
+			include('footer.php')
+			?>
 		</div>
 	</div>
 	<!-- js -->

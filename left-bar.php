@@ -14,12 +14,17 @@
 
                 <li>
                     <a href="/" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-diagram"></span><span class="mtext">Home</span>
+                        <span class="mtext"> <i class="fa fa-home" aria-hidden="true"></i> Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="/attachment-apply.php" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-diagram"></span><span class="mtext">Attachment</span>
+                        <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Attachment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/attachments-sent.php" class="dropdown-toggle no-arrow">
+                        <span class="mtext"> <i class="fa fa-inbox" aria-hidden="true"></i> Received </span>
                     </a>
                 </li>
             </ul>

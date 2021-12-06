@@ -45,18 +45,6 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
 </head>
 
 <body>
-	<!-- <div class="pre-loader">
-		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
-			<div class='loader-progress' id="progress_div">
-				<div class='bar' id='bar1'></div>
-			</div>
-			<div class='percent' id='percent1'>0%</div>
-			<div class="loading-text">
-				Loading...
-			</div>
-		</div>
-	</div> -->
 
 	<?php
 	include('top-bar.php');
@@ -115,16 +103,9 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
 			<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 			</div>
 		</div>
-		<div class="footer-wrap pd-20 mb-20 card-box">
-			Designed and Managed By MIS <a href="https://ziwatti.ac.ke" target="_blank">Ziwa Technical Training Institute</a>
-			<br>
-			<centre>
-				<h5>
-					Version 1.0
-				</h5>
-			</centre>
-
-		</div>
+		<?php
+		include('footer.php');
+		?>
 	</div>
 	</div>
 	<!-- js -->
