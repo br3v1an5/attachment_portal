@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/form-style-z.css" type="text/css">
-	
 	<title>Ajax base sign in & sign up form</title>
 
 </head>
+
 <body style="background: url(https://images.pexels.com/photos/1558732/pexels-photo-1558732.jpeg) no-repeat center center; background-size:cover cover; height:100vh;">
 	<div class="overlay"></div>
 	<div class="container">
@@ -30,7 +31,7 @@
 							<form method="post" id="singninFrom" onSubmit="return false;">
 								<div class="form-group">
 									<label class="font-weight-bold">Email <span class="badge badge-secondary">OR</span> Login Name <span class="text-danger">*</span></label>
-									<input type="text" name="signinname" id="signinname" class="form-control form-control-lg" autocomplete="off" placeholder="Sign in email or user name" value="demo@demo.com" data-required>
+									<input type="text" name="signinname" id="signinname" class="form-control form-control-lg" autocomplete="off" placeholder="Sign in email or user name" value="" data-required>
 								</div>
 								<div class="form-group">
 									<label class="font-weight-bold">Password <span class="text-danger">*</span></label>
@@ -78,8 +79,9 @@
 						</div>
 					</div>
 				</div>
-			</div> <!--/.col-xs-12 col-sm-8 col-md-6 col-lg-4-->
-			
+			</div>
+			<!--/.col-xs-12 col-sm-8 col-md-6 col-lg-4-->
+
 			<!-- Modal -->
 			<div class="modal fade" id="forgotPass" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -103,15 +105,18 @@
 					</form>
 				</div>
 			</div>
-		</div> <!--/.mt-2 mb-4-->
-	</div> <!--/.container-->
-	
-	<!-- Optional JavaScript --> 
-	<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
- 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="js/form-script.js"></script>
+		</div>
+		<!--/.mt-2 mb-4-->
+	</div>
+	<!--/.container-->
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="/js/jquery.min.js"></script>
+
+	<script src="/js/popper.min.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/form-script.js"></script>
 </body>
+
 </html>

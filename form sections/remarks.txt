@@ -1,0 +1,11 @@
+<h5>Remark</h5>
+							<section>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Comments</label>
+											<textarea class="form-control" id="remark" name="remark"></textarea>
+										</div>
+									</div>
+								</div>
+							</section>

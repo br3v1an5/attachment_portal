@@ -4,25 +4,27 @@ include_once('includes/Database.php');
 include_once('includes/class.phpmailer.php');
 include_once('includes/class.smtp.php');
 
-define('DB_NAME', 'learncodeweb_demo');
+define('DB_NAME', 'attachment');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-define('DB_HOST', 'localhost');
+define('DB_PASSWORD', '1Billion$$');
+define('DB_HOST', '127.0.0.1');
 
 /**
-** Change below url with your url
-**/
+ ** Change below url with your url
+ **/
 
-define('HOME_URL','http://localhost/demo/themeforest/',true);
+define('HOME_URL', 'http://localhost/', false);
 
-$dsn	= 	"mysql:dbname=".DB_NAME.";host=".DB_HOST."";
+$dsn	= 	"mysql:dbname=" . DB_NAME . ";host=" . DB_HOST . "";
 $pdo	=	"";
 try {
 	$pdo	=	new PDO($dsn, DB_USER, DB_PASSWORD);
-}catch (PDOException $e) {
+} catch (PDOException $e) {
 	echo "Connection failed: " . $e->getMessage();
 }
-$db 	=	new Database($pdo);
+if ($pdo !== "") {
+	$db 	=	new Database($pdo);
+}
 $mail	=	new PHPMailer;
 
 
@@ -41,4 +43,3 @@ $mail->Username 	=	'YOUR@EMAIL>COM';							// SMTP username
 $mail->Password 	=	'YOUR_PASS';								// SMTP password
 $mail->SMTPSecure	=	'tls';										// Enable encryption, 'ssl' also accepted
 */
-?>

@@ -1,0 +1,91 @@
+<h5>location Details</h5>
+<section>
+	<h5>Kindly drag the map marker to your attachment location </h5>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Lat :</label>
+				<input type="text" id="lat" readonly="yes" class="form-control" id="latitude" name="latitude">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Long:</label>
+				<input type="text" id="lng" readonly="yes" class="form-control" id="longitude" name="longitude">
+			</div>
+		</div>
+		<div class="col-md-12">
+			<!--map div-->
+			<style type="text/css">
+				#map {
+					width: 900px;
+					height: 500px;
+				}
+			</style>
+
+			<div id="map"></div>
+		</div>
+		<script>
+			//map.js
+
+			//Set up some of our variables.
+			var map; //Will contain map object.
+			var marker = false; ////Has the user plotted their location marker? 
+
+			//Function called to initialize / create the map.
+			//This is called when the page has loaded.
+			function initMap() {
+
+				//The center location of our map.
+				var centerOfMap = new google.maps.LatLng(0.8367472502153797, 35.21349522659955);
+
+				//Map options.
+				var options = {
+					center: centerOfMap, //Set center.
+					zoom: 10 //The zoom value.
+				};
+
+				//Create the map object.
+				map = new google.maps.Map(document.getElementById('map'), options);
+
+				//Listen for any clicks on the map.
+				google.maps.event.addListener(map, 'click', function (event) {
+					//Get the location that the user clicked.
+					var clickedLocation = event.latLng;
+					//If the marker hasn't been added.
+					if (marker === false) {
+						//Create the marker.
+						marker = new google.maps.Marker({
+							position: clickedLocation,
+							map: map,
+							draggable: true //make it draggable
+						});
+						//Listen for drag events!
+						google.maps.event.addListener(marker, 'dragend', function (event) {
+							markerLocation();
+						});
+					} else {
+						//Marker has already been added, so just change its location.
+						marker.setPosition(clickedLocation);
+					}
+					//Get the marker's location.
+					markerLocation();
+				});
+			}
+
+			//This function will get the marker's current location and then add the lat/long
+			//values to our textfields so that we can save the location.
+			function markerLocation() {
+				//Get location.
+				var currentLocation = marker.getPosition();
+				//Add lat and lng values to a field that we can save.
+				document.getElementById('lat').value = currentLocation.lat(); //latitude
+				document.getElementById('lng').value = currentLocation.lng(); //longitude
+			}
+
+
+			//Load the map when the page has finished loading.
+			google.maps.event.addDomListener(window, 'load', initMap);
+		</script>
+	</div>
+</section>
