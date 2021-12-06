@@ -39,7 +39,7 @@ function appendGrpah(data) {
         data: {
             labels: label,
             datasets: [{
-                label: 'Towns Of Attachement',
+                label: 'Students Attached In Town',
                 data: values,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
