@@ -1,19 +1,27 @@
 <?php
+
+// use includes\DotEnv;
+
 session_start();
+
 include_once('includes/Database.php');
 include_once('includes/class.phpmailer.php');
 include_once('includes/class.smtp.php');
+include('../includes/DotEnv.php');
 
-define('DB_NAME', 'attachment');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '1Billion$$');
-define('DB_HOST', '127.0.0.1');
+
+(new DotEnv('../.env'))->load();
+
+define('DB_NAME', getenv('DB_DATABASE'));
+define('DB_USER', getenv('DB_USERNAME'));
+define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define('DB_HOST', getenv('DB_HOST'));
 
 /**
  ** Change below url with your url
  **/
 
-define('HOME_URL', 'http://localhost/', false);
+define('HOME_URL', getenv('APP_URL'), false);
 
 $dsn	= 	"mysql:dbname=" . DB_NAME . ";host=" . DB_HOST . "";
 $pdo	=	"";
