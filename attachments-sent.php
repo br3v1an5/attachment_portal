@@ -74,9 +74,6 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
                                 <th>Department</th>
                                 <th>Class</th>
                                 <th>Alternative Phone</th>
-                                <th>
-                                    MAP
-                                </th>
                                 <th>Attached Department</th>
                                 <th>Supervisor Number</th>
                                 <th>Supervisor Number</th>
@@ -86,6 +83,7 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
                                 <th>Start Date</th>
                                 <th>Completion Date</th>
                                 <th>Remark</th>
+                                <th>Map</th>
                             </tr>
                         </thead>
                     </table>
@@ -115,6 +113,7 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
     </div>
     </div>
     <!-- js -->
+    <!-- <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false" type="text/javascript"></script> -->
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
