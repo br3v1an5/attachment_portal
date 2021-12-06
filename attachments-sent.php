@@ -83,6 +83,7 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
                                 <th>Start Date</th>
                                 <th>Completion Date</th>
                                 <th>Remark</th>
+                                <th>Town</th>
                                 <th>Map</th>
                             </tr>
                         </thead>

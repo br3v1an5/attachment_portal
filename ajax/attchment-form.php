@@ -18,6 +18,7 @@ $insurance = $_REQUEST['insurance'];
 $org_name = $_REQUEST['org_name'];
 $start_date = $_REQUEST['start_date'];
 $completion_date = $_REQUEST['completion_date'];
+$town = $_REQUEST['town'];
 // latitude
 if (isset($_REQUEST['latitude']) and $_REQUEST['latitude'] != "") {
     $latitude = isset($_REQUEST['latitude']) ? $_REQUEST['latitude'] : 0.000000;
@@ -68,6 +69,7 @@ $data = [
     'org_name' => $org_name,
     'start_date' => date_format(new DateTime($start_date), 'Y-m-d'),
     'completion_date' => date_format(new DateTime($completion_date), 'Y-m-d'),
+    'town' => $town,
     'remark' => $remark,
 ];
 // Send Data to DB

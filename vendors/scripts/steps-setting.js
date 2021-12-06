@@ -31,6 +31,7 @@ $(".tab-wizard").steps({
 		var latitude = document.getElementById('lat').value;
 		var longitude = document.getElementById('lng').value;
 		var remark = document.getElementById('remark').value;
+		var town = document.getElementById('town').value;
 
 		var data = {
 			firstname,
@@ -52,6 +53,7 @@ $(".tab-wizard").steps({
 			latitude,
 			longitude,
 			remark,
+			town
 		}
 
 		// $('#success-modal').modal('show');

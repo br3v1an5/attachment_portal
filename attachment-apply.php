@@ -190,6 +190,10 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
 												<label>Organization Contact :</label>
 												<input type="text" class="form-control" id="org_no" name="org_no">
 											</div>
+											<div class="form-group">
+												<label>Town of Organization</label>
+												<input type="text" class="form-control" id="town" name="town">
+											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
