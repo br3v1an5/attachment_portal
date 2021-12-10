@@ -22,16 +22,19 @@
                         <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Attachment</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/attachments-sent.php" class="dropdown-toggle no-arrow">
-                        <span class="mtext"> <i class="fa fa-inbox" aria-hidden="true"></i> Received </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/graphs.php" class="dropdown-toggle no-arrow">
-                        <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Graphs </span>
-                    </a>
-                </li>
+                <?php if ($_SESSION['is_admin'] == 1) {  ?>
+                    <li>
+                        <a href="/attachments-sent.php" class="dropdown-toggle no-arrow">
+                            <span class="mtext"> <i class="fa fa-inbox" aria-hidden="true"></i> Received </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/graphs.php" class="dropdown-toggle no-arrow">
+                            <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Graphs </span>
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

@@ -75,7 +75,7 @@ if (isset($_REQUEST['forgotemail']) and $_REQUEST['forgotemail'] != "") {
 
 if (isset($_REQUEST['signinname']) and $_REQUEST['signinname'] != "") {
 	extract($_REQUEST);
-	$getUsers	=	$db->getAllRecords('tb_user', 'id,username,useremail,userpassword', ' AND ((useremail="' . $signinname . '") OR (username="' . $signinname . '")) AND userstatus=1 ');
+	$getUsers	=	$db->getAllRecords('tb_user', 'id,username,useremail,userpassword,is_admin', ' AND ((useremail="' . $signinname . '") OR (username="' . $signinname . '")) AND userstatus=1 ');
 	if (isset($getUsers[0]['userpassword']) and $getUsers[0]['userpassword'] != "") {
 		/*
 		** Get and varify user password
@@ -85,6 +85,7 @@ if (isset($_REQUEST['signinname']) and $_REQUEST['signinname'] != "") {
 		if (password_verify($signinpassword, $hash)) {
 			$_SESSION['id']			=	$getUsers[0]['id'];
 			$_SESSION['name']		=	$getUsers[0]['username'];
+			$_SESSION['is_admin'] = $getUsers[0]['is_admin'];
 			echo '<div class="alert alert-success p-1 mt-1"><i class="fa fa-fw fa-thumbs-up"></i> Login successfully <strong>Please wait..!</strong></div>|***|1|***|attachment.html';
 			exit;
 		} else {
