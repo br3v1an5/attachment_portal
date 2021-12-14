@@ -1,6 +1,6 @@
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
+        <a href="/color-settings.html">
             <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
             <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
         </a>
@@ -11,7 +11,6 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-
                 <li>
                     <a href="/" class="dropdown-toggle no-arrow">
                         <span class="mtext"> <i class="fa fa-home" aria-hidden="true"></i> Home</span>
@@ -21,6 +20,15 @@
                     <a href="/attachment-apply.php" class="dropdown-toggle no-arrow">
                         <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Attachment</span>
                     </a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="triggerId" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                        <i class="fa fa-shield" aria-hidden="true"></i> Supervisor
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                        <a class="dropdown-item" href="/supervisor_create.php">New</a>
+                        <a class="dropdown-item" href="#">View</a>
+                    </div>
                 </li>
                 <?php if ($_SESSION['is_admin'] == 1) {  ?>
                     <li>
