@@ -28,6 +28,9 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
     <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+    <link rel="stylesheet" href="/css/form-style-z.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -45,7 +48,7 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
 </head>
 
 <body>
-
+    <div class="overlay"></div>
     <?php
     include('top-bar.php');
     ?>
@@ -64,82 +67,96 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
         <div class="pd-ltr-20 xs-pd-20-10">
             <div class="min-height-200px">
                 <h5>Personal Information</h5>
-                <section>
-                    <div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>First Name :</label>
-                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                <div id="message_div"></div>
+                <form id="supervisor_form">
+                    <section>
+                        <div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name :</label>
+                                        <input type="text" class="form-control" required id="firstname" name="firstname">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name :</label>
+                                        <input type="text" class="form-control" required id="lastname" name="lastname">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Last Name :</label>
-                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email Address :</label>
+                                        <input type="email" class="form-control" id="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Your Phone Number:</label>
+                                        <input type="text" class="form-control" required id="phone_number" name="phone_number">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Select Department :</label>
+                                        <select class="custom-select form-control" required id="department">
+                                            <option value="">ICT</option>
+                                            <option value="Amsterdam">MECHANICAL / AUTOMOTIVE</option>
+                                            <option value="Berlin">BULDING AND CONSTRUCTION</option>
+                                            <option value="Frankfurt">ELECTRICAL ENGINEERING</option>
+                                            <option value="Amsterdam">HOSPITALITY AND DIATETICS</option>
+                                            <option value="Berlin">BUSINESS STUDIES</option>
+                                            <option value="Frankfurt">APPLIED AND ENVIRONMENTAL SCIENCE</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date of Birth :</label>
+                                        <input type="text" required class="form-control date-picker" placeholder="Select Date" id="dob" name="dob">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email Address :</label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Select you class:</label>
+                                        <select class="custom-select form-control" id="class" required>
+                                            <option value="">DICT S20</option>
+                                            <option value="Amsterdam">CEE M19</option>
+                                            <option value="Berlin">ADH S21</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Your Phone Number:</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Alternative Phone Number :</label>
+                                        <input type="text" class="form-control" data-required id="alt_phone" name="alt_phone" required>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Select Department :</label>
-                                    <select class="custom-select form-control" id="department">
-                                        <option value="">ICT</option>
-                                        <option value="Amsterdam">MECHANICAL / AUTOMOTIVE</option>
-                                        <option value="Berlin">BULDING AND CONSTRUCTION</option>
-                                        <option value="Frankfurt">ELECTRICAL ENGINEERING</option>
-                                        <option value="Amsterdam">HOSPITALITY AND DIATETICS</option>
-                                        <option value="Berlin">BUSINESS STUDIES</option>
-                                        <option value="Frankfurt">APPLIED AND ENVIRONMENTAL SCIENCE</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Date of Birth :</label>
-                                    <input type="text" class="form-control date-picker" placeholder="Select Date" id="dob" name="dob">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Select you class:</label>
-                                    <select class="custom-select form-control" id="class">
-                                        <option value="">DICT S20</option>
-                                        <option value="Amsterdam">CEE M19</option>
-                                        <option value="Berlin">ADH S21</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Alternative Phone Number :</label>
-                                    <input type="text" class="form-control" id="alt_phone" name="alt_phone" required>
-                                </div>
-                            </div>
-                        </div>
+                    </section>
+                </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-success float-right" id="submit">
+                            Submit
+                        </button>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
         <?php
+        include('./messages/success_popup.php');
+        include('./messages/error_popup.php');
         include('footer.php');
         ?>
     </div>
@@ -149,6 +166,7 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="/js/supervisor.js"></script>
 </body>
 
 </html>
