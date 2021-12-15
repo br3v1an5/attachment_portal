@@ -25,13 +25,13 @@
                 <?php } ?>
                 <?php if ($_SESSION['is_admin'] == 1) {  ?>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" id="triggerId" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                            <i class="fa fa-shield" aria-hidden="true"></i> Supervisor
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-right-arrow1"></span><span class="mtext">Supervisors</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="triggerId">
-                            <a class="dropdown-item" href="/supervisor_create.php">New</a>
-                            <a class="dropdown-item" href="/registered_supervisors.php">View</a>
-                        </div>
+                        <ul class="submenu">
+                            <li><a href="/supervisor_create.php">New Supervisor</a></li>
+                            <li><a href="/registered_supervisors.php">Manage Supervisors</a></li>
+                        </ul>
                     </li>
 
                     <li>
