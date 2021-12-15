@@ -16,21 +16,24 @@
                         <span class="mtext"> <i class="fa fa-home" aria-hidden="true"></i> Home</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/attachment-apply.php" class="dropdown-toggle no-arrow">
-                        <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Attachment</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" id="triggerId" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                        <i class="fa fa-shield" aria-hidden="true"></i> Supervisor
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="triggerId">
-                        <a class="dropdown-item" href="/supervisor_create.php">New</a>
-                        <a class="dropdown-item" href="/registered_supervisors.php">View</a>
-                    </div>
-                </li>
+                <?php if ($_SESSION['is_admin'] != 1) {  ?>
+                    <li>
+                        <a href="/attachment-apply.php" class="dropdown-toggle no-arrow">
+                            <span class="mtext"> <i class="fa fa-map-pin" aria-hidden="true"></i> Attachment</span>
+                        </a>
+                    </li>
+                <?php } ?>
                 <?php if ($_SESSION['is_admin'] == 1) {  ?>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="triggerId" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                            <i class="fa fa-shield" aria-hidden="true"></i> Supervisor
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="triggerId">
+                            <a class="dropdown-item" href="/supervisor_create.php">New</a>
+                            <a class="dropdown-item" href="/registered_supervisors.php">View</a>
+                        </div>
+                    </li>
+
                     <li>
                         <a href="/attachments-sent.php" class="dropdown-toggle no-arrow">
                             <span class="mtext"> <i class="fa fa-inbox" aria-hidden="true"></i> Received </span>
