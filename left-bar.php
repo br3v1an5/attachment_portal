@@ -27,7 +27,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="triggerId">
                         <a class="dropdown-item" href="/supervisor_create.php">New</a>
-                        <a class="dropdown-item" href="#">View</a>
+                        <a class="dropdown-item" href="/registered_supervisors.php">View</a>
                     </div>
                 </li>
                 <?php if ($_SESSION['is_admin'] == 1) {  ?>
