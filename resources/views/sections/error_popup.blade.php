@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-body text-center font-18">
                 <h3 class="mb-20">Error Occured!</h3>
-                <div class="mb-30 text-center"><img src="/vendors/images/caution-sign.png"></div>
+                <div class="mb-30 text-center"><img src="/assets/vendors/images/caution-sign.png"></div>
                 <div id="error-message"></div>
             </div>
             <div class="modal-footer justify-content-center">

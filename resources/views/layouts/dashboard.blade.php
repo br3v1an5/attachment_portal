@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
-    header("location:/index.php");
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -74,9 +68,8 @@ if (!isset($_SESSION['name']) && $_SESSION['name'] == '') {
     <script src="/assets/vendors/scripts/process.js"></script>
     <script src="/assets/vendors/scripts/layout-settings.js"></script>
     <script src="/assets/src/plugins/jquery-steps/jquery.steps.js"></script>
-    <script src="/assets/vendors/scripts/steps-setting.js"></script>
-    <script src="/assets/js/apply.js"></script>
-    <script src="/assets/js/gmap.js"></script>
+    @yield('scripts');
+    <!-- <script src="/assets/js/apply.js"></script> -->
 </body>
 
 </html>

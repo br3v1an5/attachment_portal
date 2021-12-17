@@ -22,5 +22,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::apiResource('supervisor', SupervisorController::class);
-    Route::apiResource('attachment', AttachmentController::class);
+    Route::prefix('student')->name('student.')->group(function () {
+        Route::resource('attachment', Student\AttachmentApplicationController::class);
+    });
 });

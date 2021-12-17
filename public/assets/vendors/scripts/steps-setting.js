@@ -12,9 +12,9 @@ $(".tab-wizard").steps({
 		$('.steps .current').prevAll().addClass('disabled');
 	},
 	onFinished: function (event, currentIndex) {
-		var firstname = document.getElementById('firstname').value;
-		var lastname = document.getElementById('lastname').value;
-		var email = document.getElementById('email').value;
+		// var firstname = document.getElementById('firstname').value;
+		// var lastname = document.getElementById('lastname').value;
+		// var email = document.getElementById('email').value;
 		var phone_number = document.getElementById('phone_number').value;
 		var department = document.getElementById('department').value;
 		var dob = document.getElementById('dob').value;
@@ -33,10 +33,13 @@ $(".tab-wizard").steps({
 		var remark = document.getElementById('remark').value;
 		var town = document.getElementById('town').value;
 
+
+
+
 		var data = {
-			firstname,
-			lastname,
-			email,
+			// firstname,
+			// lastname,
+			// email,
 			phone_number,
 			department,
 			dob,
@@ -59,12 +62,23 @@ $(".tab-wizard").steps({
 		// $('#success-modal').modal('show');
 		$.ajax({
 			type: 'POST',
-			url: '/ajax/attchment-form.php',
+			url: '/student/attachment',
 			data: data,
 			success: function (data, status) {
 				$('#success-modal').modal('show');
 			},
-			error: function (request, status, error) {
+			error: function (xhr) {
+				switch (xhr.status) {
+					case 422:
+						for (let i in xhr.responseJSON.errors) {
+							$('#error-message').html(`<div class="text-danger"><i class="fa fa-exclamation-circle"></i> ${xhr.responseJSON.errors[i][0]} </div>`);
+						}
+						break;
+
+					default:
+						$('#error-message').html(`<div class="text-danger"><i class="fa fa-exclamation-circle"></i> Unknown Error Occured </div>`);
+						break;
+				}
 				$('#error-modal').modal('show');
 			}
 		});

@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-body text-center font-18">
                 <h3 class="mb-20">Form Submitted!</h3>
-                <div class="mb-30 text-center"><img src="vendors/images/success.png"></div>
+                <div class="mb-30 text-center"><img src="/assets/vendors/images/success.png"></div>
                 <div id="success_message"></div>
             </div>
             <div class="modal-footer justify-content-center">
