@@ -62,7 +62,7 @@
                             <li>
                                 <a href="{{route('mark_note_read',$note->id)}}">
                                     <img src="/assets/vendors/images/ziwatti.jpg" alt="">
-                                    <h3># {{$note->data['application_id']}}</h3>
+                                    <h3># {{$note->data['notification_type']}}</h3>
                                     <p>{{$note->data['message']}}</p>
                                 </a>
                             </li>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Notifiable;
 
 class HomeController extends Controller
 {
@@ -26,12 +26,10 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
-    public function markRead(Notification $notice)
+    public function markRead($notice)
     {
-        // dd($notice);
-        // dd($notice);
-        // $notification->markas();
-        $notice->markAsRead();
+        $notification  = auth()->user()->notifications->where('id', $notice)->first();
+        $notification->markAsRead();
         return redirect(route('home'))->with('message', 'Notification marked as read');
     }
 }

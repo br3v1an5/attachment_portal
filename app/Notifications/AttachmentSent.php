@@ -46,7 +46,7 @@ class AttachmentSent extends Notification
     {
         return [
             'notification_type' => 'Attachment Application',
-            'message' => 'Hello ' . $this->student->user->name . '. We received your application data.',
+            'message' => 'Hello ' . $this->student->user->name . '. We received your application data, please check your email for data received.',
         ];
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Student\ApplyAttachment;
+use App\Mail\AttachmentSent as MailAttachmentSent;
 use App\Models\AttachmentApplication;
 use App\Notifications\AttachmentSent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AttachmentApplicationController extends Controller
 {
@@ -46,6 +48,10 @@ class AttachmentApplicationController extends Controller
     {
         $user = auth()->user();
         // dd($request->all());
+        $student = auth()->user()->student;
+        if ($student != null) {
+            return redirect(route('home'))->with('message', 'Attachment Application Exists For Your Account');
+        }
         $student = $user->student()->create([
             "phone_number" => $request->phone_number,
             "department" => $request->department,
@@ -67,6 +73,7 @@ class AttachmentApplicationController extends Controller
             "town" => $request->town,
         ]);
         $user->notify(new AttachmentSent($attchment, $student));
+        Mail::to($student->user->email)->send(new MailAttachmentSent($student));
         return $attchment;
     }
 
