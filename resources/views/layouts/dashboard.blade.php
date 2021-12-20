@@ -20,9 +20,7 @@
 
     <link rel="stylesheet" type="text/css" href="/assets/vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="/assets/vendors/styles/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/src/plugins/jquery-steps/jquery.steps.css">
     <link rel="stylesheet" type="text/css" href="/assets/vendors/styles/style.css">
-
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -43,6 +41,7 @@
             height: 500px;
         }
     </style>
+    @yield('styles')
 </head>
 
 <body>
@@ -53,6 +52,15 @@
     <div class="main-container">
         <div class="pd-ltr-20 xs-pd-20-10">
             <div class="min-height-200px">
+                @if(session()->has('message'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>Message</strong> {{session()->get('message')}}
+                </div>
+                @endif
                 @yield('content');
 
 
@@ -63,11 +71,12 @@
         </div>
     </div>
     <!-- js -->
+    <script src="{{asset('js/jquery3.1.js')}}"></script>
     <script src="/assets/vendors/scripts/core.js"></script>
     <script src="/assets/vendors/scripts/script.min.js"></script>
     <script src="/assets/vendors/scripts/process.js"></script>
     <script src="/assets/vendors/scripts/layout-settings.js"></script>
-    <script src="/assets/src/plugins/jquery-steps/jquery.steps.js"></script>
+
     @yield('scripts');
     <!-- <script src="/assets/js/apply.js"></script> -->
 </body>

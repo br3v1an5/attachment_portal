@@ -15,7 +15,20 @@ class CreateAttachmentApplicationsTable extends Migration
     {
         Schema::create('attachment_applications', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('student_id');
+            $table->string("attached_dep");
+            $table->string("org_email");
+            $table->string("org_no");
+            $table->string("insurance");
+            $table->string("org_name");
+            $table->date("start_date");
+            $table->date("completion_date");
+            $table->string("latitude")->nullable();
+            $table->string("longitude")->nullable();
+            $table->string("remark");
+            $table->string("town");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -51,53 +51,29 @@
             <div class="dropdown">
                 <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
                     <i class="icon-copy dw dw-notification"></i>
-                    <span class="badge notification-active"></span>
+                    <span class="badge notification-active">{{auth()->user()->unreadNotifications->count()}}</span>
+                    <!-- <span></span> -->
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="notification-list mx-h-350 customscroll">
                         <ul>
+                            @if(auth()->user()->unreadNotifications->count()>0)
+                            @foreach(auth()->user()->unreadNotifications as $note)
                             <li>
-                                <a href="#">
-                                    <img src="/assets/vendors/images/img.jpg" alt="">
-                                    <h3>John Doe</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                <a href="{{route('mark_note_read',$note->id)}}">
+                                    <img src="/assets/vendors/images/ziwatti.jpg" alt="">
+                                    <h3># {{$note->data['application_id']}}</h3>
+                                    <p>{{$note->data['message']}}</p>
                                 </a>
                             </li>
+                            @endforeach
+                            @else
                             <li>
                                 <a href="#">
-                                    <img src="/assets/vendors/images/photo1.jpg" alt="">
-                                    <h3>Lea R. Frith</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                    <p>You have caught up with everything for now</p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/assets/vendors/images/photo2.jpg" alt="">
-                                    <h3>Erik L. Richards</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/assets/vendors/images/photo3.jpg" alt="">
-                                    <h3>John Doe</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/assets/vendors/images/photo4.jpg" alt="">
-                                    <h3>Renee I. Hansen</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/assets/vendors/images/img.jpg" alt="">
-                                    <h3>Vicki M. Coleman</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                </a>
-                            </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

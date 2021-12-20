@@ -12,16 +12,12 @@ $(".tab-wizard").steps({
 		$('.steps .current').prevAll().addClass('disabled');
 	},
 	onFinished: function (event, currentIndex) {
-		// var firstname = document.getElementById('firstname').value;
-		// var lastname = document.getElementById('lastname').value;
-		// var email = document.getElementById('email').value;
 		var phone_number = document.getElementById('phone_number').value;
 		var department = document.getElementById('department').value;
 		var dob = document.getElementById('dob').value;
 		var sel_class = document.getElementById('class').value;
 		var alt_phone = document.getElementById('alt_phone').value;
 		var attached_dep = document.getElementById('attached_dep').value;
-		var supervisor_no = document.getElementById('supervisor_no').value;
 		var org_email = document.getElementById('org_email').value;
 		var org_no = document.getElementById('org_no').value;
 		var insurance = document.getElementById('insurance').value;
@@ -32,21 +28,15 @@ $(".tab-wizard").steps({
 		var longitude = document.getElementById('lng').value;
 		var remark = document.getElementById('remark').value;
 		var town = document.getElementById('town').value;
-
-
-
+		var _token = $('input[name="_token"]')[0].value
 
 		var data = {
-			// firstname,
-			// lastname,
-			// email,
 			phone_number,
 			department,
 			dob,
 			sel_class,
 			alt_phone,
 			attached_dep,
-			supervisor_no,
 			org_email,
 			org_no,
 			insurance,
@@ -56,7 +46,8 @@ $(".tab-wizard").steps({
 			latitude,
 			longitude,
 			remark,
-			town
+			town,
+			_token
 		}
 
 		// $('#success-modal').modal('show');
@@ -66,12 +57,15 @@ $(".tab-wizard").steps({
 			data: data,
 			success: function (data, status) {
 				$('#success-modal').modal('show');
+				window.location = '/'
 			},
 			error: function (xhr) {
+				$('#error-message').children().remove()
 				switch (xhr.status) {
 					case 422:
 						for (let i in xhr.responseJSON.errors) {
-							$('#error-message').html(`<div class="text-danger"><i class="fa fa-exclamation-circle"></i> ${xhr.responseJSON.errors[i][0]} </div>`);
+							let p = `<div class="text-danger"><i class="fa fa-exclamation-circle"></i> ${xhr.responseJSON.errors[i][0]} </div>`;
+							$('#error-message').append(p);
 						}
 						break;
 

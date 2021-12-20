@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'username'
+        'username',
+        'is_supervisor'
     ];
 
     /**
@@ -42,4 +43,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * Determine if the current user is a guest.
+     *
+     * @return User
+     */
+    public function attachment_application()
+    {
+        return $this->hasOne(AttachmentApplication::class);
+    }
+    public function supervisor()
+    {
+        return $this->hasOne(Supervisor::class);
+    }
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
 }

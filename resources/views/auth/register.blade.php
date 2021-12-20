@@ -26,7 +26,7 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
                         <div class="col-sm-12 border border-primary shadow rounded bg-white pt-2">
-                            <div class="text-center"><img src="https://placehold.it/80x80" class="rounded-circle border p-1"></div>
+                            <div class="text-center"><img src="http://placehold.it/80x80" class="rounded-circle border p-1"></div>
                             <em id="signUpMsg"></em>
                             <form method="post" id="singnupFrom" onSubmit="return false;">
                                 @csrf

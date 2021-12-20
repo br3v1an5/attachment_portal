@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Student\ApplyAttachment;
 use App\Models\AttachmentApplication;
+use App\Notifications\AttachmentSent;
 use Illuminate\Http\Request;
 
 class AttachmentApplicationController extends Controller
@@ -26,6 +28,10 @@ class AttachmentApplicationController extends Controller
      */
     public function create()
     {
+        $student = auth()->user()->student;
+        if ($student != null) {
+            return redirect(route('home'))->with('message', 'Attachment Application Exists For Your Account');
+        }
         return  view('attachment.create');
     }
 
@@ -36,9 +42,32 @@ class AttachmentApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplyAttachment $request)
     {
-        return  AttachmentApplication::create($request->validated());
+        $user = auth()->user();
+        // dd($request->all());
+        $student = $user->student()->create([
+            "phone_number" => $request->phone_number,
+            "department" => $request->department,
+            "dob" => $request->dob,
+            "sel_class" => $request->sel_class,
+            "alt_phone" => $request->alt_phone,
+        ]);
+        $attchment =  $student->attachment_application()->create([
+            "attached_dep" => $request->attached_dep,
+            "org_email" => $request->org_email,
+            "org_no" => $request->org_no,
+            "insurance" => $request->insurance,
+            "org_name" => $request->org_name,
+            "start_date" => $request->start_date,
+            "completion_date" => $request->completion_date,
+            "latitude" => $request->latitude,
+            "longitude" => $request->longitude,
+            "remark" => $request->remark,
+            "town" => $request->town,
+        ]);
+        $user->notify(new AttachmentSent($attchment, $student));
+        return $attchment;
     }
 
     /**

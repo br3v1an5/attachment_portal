@@ -10,9 +10,23 @@ class AttachmentApplication extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = [];
+    protected $fillable = [
+        "attached_dep",
+        "org_email",
+        "org_no",
+        "insurance",
+        "org_name",
+        "start_date",
+        "completion_date",
+        "latitude",
+        "longitude",
+        "remark",
+        "town",
+    ];
+
+
     public function student()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Student::class);
     }
 }

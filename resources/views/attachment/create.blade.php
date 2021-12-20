@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('styles')
+<link rel="stylesheet" type="text/css" href="/assets/src/plugins/jquery-steps/jquery.steps.css">
+@endsection
+
 @section('content')
 <div class="wizard-content">
     <form class="tab-wizard wizard-circle">
@@ -21,20 +25,20 @@
                         <div class="form-group">
                             <label>Select Department :</label>
                             <select class="custom-select form-control" id="department">
-                                <option disabled value="">--Select --</option>
-                                <option value="Amsterdam">MECHANICAL / AUTOMOTIVE</option>
-                                <option value="Berlin">BULDING AND CONSTRUCTION</option>
-                                <option value="Frankfurt">ELECTRICAL ENGINEERING</option>
-                                <option value="Amsterdam">HOSPITALITY AND DIATETICS</option>
-                                <option value="Berlin">BUSINESS STUDIES</option>
-                                <option value="Frankfurt">APPLIED AND ENVIRONMENTAL SCIENCE</option>
+                                <option value="" disabled>Select Department</option>
+                                <option value="MECHANICAL_AUTOMOTIVE">MECHANICAL / AUTOMOTIVE</option>
+                                <option value="BULDING_AND_CONSTRUCTION">BULDING AND CONSTRUCTION</option>
+                                <option value="ELECTRICAL_ENGINEERING">ELECTRICAL ENGINEERING</option>
+                                <option value="HOSPITALITY_AND_DIATETICS">HOSPITALITY AND DIATETICS</option>
+                                <option value="BUSINESS_STUDIES">BUSINESS STUDIES</option>
+                                <option value="APPLIED_AND_ENVIRONMENTAL_SCIENCE">APPLIED AND ENVIRONMENTAL SCIENCE</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Date of Birth :</label>
-                            <input type="text" class="form-control date-picker" placeholder="Select Date" id="dob" name="dob">
+                            <input type="date" class="form-control" placeholder="Select Date" id="dob" name="dob">
                         </div>
                     </div>
                 </div>
@@ -44,8 +48,8 @@
                             <label>Select you class:</label>
                             <select class="custom-select form-control" id="class">
                                 <option value="" disabled>-Select Class-</option>
-                                <option value="Amsterdam">CEE M19</option>
-                                <option value="Berlin">ADH S21</option>
+                                <option value="CEE_M19">CEE M19</option>
+                                <option value="ADH_S21">ADH S21</option>
                             </select>
                         </div>
                     </div>
@@ -69,18 +73,14 @@
                             <input type="text" class="form-control" id="attached_dep" name="attached_dep">
                         </div>
                         <div class="form-group">
-                            <label>Supervisor contact :</label>
-                            <input type="text" class="form-control" id="supervisor_no" name="supervisor_no">
+                            <label>Name of the Organization :</label>
+                            <input type="text" class="form-control" id="org_name" name="org_name">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Organization's Email Address :</label>
                             <input type="text" class="form-control" id="org_email" name="org_email">
-                        </div>
-                        <div class="form-group">
-                            <label>Organization Contact :</label>
-                            <input type="text" class="form-control" id="org_no" name="org_no">
                         </div>
                         <div class="form-group">
                             <label>Town of Organization</label>
@@ -98,18 +98,19 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Name of the Organization :</label>
-                            <input type="text" class="form-control" id="org_name" name="org_name">
+                            <label>Starting date :</label>
+                            <input type="date" class="form-control" placeholder="Select starting Date" id="start_date" name="start_date">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Starting date :</label>
-                            <input type="text" class="form-control date-picker" placeholder="Select starting Date" id="start_date" name="start_date">
-                        </div>
+
                         <div class="form-group">
                             <label>Completion date :</label>
-                            <input class="form-control date-picker" placeholder="Select complition date " type="text" id="completion_date" name="completion_date">
+                            <input class="form-control" placeholder="Select complition date " type="date" id="completion_date" name="completion_date">
+                        </div>
+                        <div class="form-group">
+                            <label>Organization Contact :</label>
+                            <input type="text" class="form-control" id="org_no" name="org_no">
                         </div>
                     </div>
                 </div>
@@ -162,6 +163,7 @@
 @endsection
 
 @section('scripts')
+<script src="/assets/src/plugins/jquery-steps/jquery.steps.js"></script>
 <script src="/assets/vendors/scripts/steps-setting.js"></script>
 <script src="/assets/js/gmap.js"></script>
 @endsection
