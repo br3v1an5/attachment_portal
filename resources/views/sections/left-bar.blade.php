@@ -26,6 +26,15 @@
                 @if(auth()->user()->is_admin)
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Departments</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{route('admin.department.create')}}">New</a></li>
+                        <li><a href="{{route('admin.department.index')}}">View </a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">Supervisors</span>
                     </a>
                     <ul class="submenu">

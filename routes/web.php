@@ -34,5 +34,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/supervisors/attach_students', 'Admin\SupervisorAttachmentController@sync')->name('supervisor_student');
         Route::resource('supervisors', Admin\SupervisorController::class);
         Route::get('/towns/create', 'Admin\TownController@index')->name('towns.create');
+        Route::resource('department', Admin\DepartmentController::class);
     });
 });

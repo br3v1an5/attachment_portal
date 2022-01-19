@@ -14,6 +14,8 @@ class SupervisorAllocated extends Mailable
     use Queueable, SerializesModels;
     public $student;
     public $supervisor;
+
+
     /**
      * Create a new message instance.
      *
@@ -32,6 +34,6 @@ class SupervisorAllocated extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.student.supervisor_allocated');
+        return $this->view('emails.student.supervisor_allocated');
     }
 }
