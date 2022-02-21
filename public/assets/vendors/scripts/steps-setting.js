@@ -13,9 +13,9 @@ $(".tab-wizard").steps({
 	},
 	onFinished: function (event, currentIndex) {
 		var phone_number = document.getElementById('phone_number').value;
-		var department = document.getElementById('department').value;
+		var department_id = document.getElementById('department').value;
 		var dob = document.getElementById('dob').value;
-		var sel_class = document.getElementById('class').value;
+		var course_id = document.getElementById('class').value;
 		var alt_phone = document.getElementById('alt_phone').value;
 		var attached_dep = document.getElementById('attached_dep').value;
 		var org_email = document.getElementById('org_email').value;
@@ -32,9 +32,9 @@ $(".tab-wizard").steps({
 
 		var data = {
 			phone_number,
-			department,
+			department_id,
 			dob,
-			sel_class,
+			course_id,
 			alt_phone,
 			attached_dep,
 			org_email,

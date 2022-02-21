@@ -1,45 +1,54 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="/images/moilogo.png" class="brand_logo" alt="Logo" />
+                </div>
+            </div>
 
-                <div class="card-body">
-                    @if (session('status'))
+            <div class="d-flex justify-content-center form_container">
+                <form method="post" action="{{ route('password.email') }}" id="form1">
+                    <div align="center">
+                        @csrf
+
+                        <h4 class="text-white font-weight-bold">ZIWA Technical Training College<br />
+                        </h4>
+                        <h3 class="text-center text-danger">Password Reset</h3>
+                        <i class="text-white">Technology for human advancement</i>
+                        @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
+                        @endif
+                    </div>
+                    <br />
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
                         </div>
+                        <input name="email" type="text" id="Main_txtUserName" class="form-control @error('email') is-invalid @enderror input_user" placeholder="Email" required />
+                        @error('email')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input type="submit" value="Send Password Reset Link" id="Main_btnDefaultLogin" class="btn login_btn" />
+                    </div>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            <a href="{{route('login')}}" class="text-white">Go to Login</a>
+                            <br />
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createSupervisorRequest;
+use App\Models\Course;
+use App\Models\Department;
 use App\Models\Supervisor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,7 +31,9 @@ class SupervisorController extends Controller
      */
     public function create()
     {
-        return view('admin.supervisors.create');
+        $departments = Department::select('name', 'id')->get();
+        $courses = Course::select('name', 'id')->get();
+        return view('admin.supervisors.create', compact('departments', 'courses'));
     }
 
     /**
@@ -55,9 +59,9 @@ class SupervisorController extends Controller
         if ($user != null) {
             return  $user->supervisor()->create([
                 'phone_number' => $request->phone_number,
-                'department' => $request->department,
+                '_id' => $request->department_id,
                 'dob' => $request->dob,
-                'class_name' => $request->class_name,
+                'course_id' => $request->course_id,
                 'alt_phone' => $request->alt_phone,
             ]);
         } else {

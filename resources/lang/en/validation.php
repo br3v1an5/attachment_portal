@@ -144,6 +144,12 @@ return [
         ],
         'agree_to_terms' => [
             'required' => 'You must agree to our terms and conditions'
+        ],
+        'course_id' => [
+            'required' => 'Please choose a valid class or course'
+        ],
+        'department_id' => [
+            'required' => 'Please choose a valid department'
         ]
 
     ],
@@ -159,6 +165,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'course_id' => 'Course',
+        'department_id' => 'Department',
+        'alt_phone' => 'Alternative Phone Number',
+        'org_no' => 'Organization Contact',
+        'org_name' => 'Organization Name',
+        'attached_dep' => 'Attached Department',
+        'org_email' => 'organization email'
+    ],
 
 ];

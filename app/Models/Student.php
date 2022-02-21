@@ -14,9 +14,9 @@ class Student extends Model
     use Notifiable;
     protected $fillable = [
         "phone_number",
-        "department",
+        "department_id",
         "dob",
-        "sel_class",
+        "course_id",
         "alt_phone",
     ];
     public function attachment_application()
@@ -30,5 +30,13 @@ class Student extends Model
     public function supervisor()
     {
         return $this->belongsTo(Supervisor::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
     }
 }

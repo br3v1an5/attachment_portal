@@ -57,6 +57,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="notification-list mx-h-350 customscroll">
                         <ul>
+                            @auth
                             @if(auth()->user()->unreadNotifications->count()>0)
                             @foreach(auth()->user()->unreadNotifications as $note)
                             <li>
@@ -74,6 +75,7 @@
                                 </a>
                             </li>
                             @endif
+                            @endauth
                         </ul>
                     </div>
                 </div>

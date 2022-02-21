@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 <div class="wizard-content">
     <form class="tab-wizard wizard-circle">
         <h5>Personal Information</h5>
@@ -26,12 +27,9 @@
                             <label>Select Department :</label>
                             <select class="custom-select form-control" id="department">
                                 <option value="" disabled>Select Department</option>
-                                <option value="MECHANICAL_AUTOMOTIVE">MECHANICAL / AUTOMOTIVE</option>
-                                <option value="BULDING_AND_CONSTRUCTION">BULDING AND CONSTRUCTION</option>
-                                <option value="ELECTRICAL_ENGINEERING">ELECTRICAL ENGINEERING</option>
-                                <option value="HOSPITALITY_AND_DIATETICS">HOSPITALITY AND DIATETICS</option>
-                                <option value="BUSINESS_STUDIES">BUSINESS STUDIES</option>
-                                <option value="APPLIED_AND_ENVIRONMENTAL_SCIENCE">APPLIED AND ENVIRONMENTAL SCIENCE</option>
+                                @foreach($departments as $department)
+                                <option value="{{$department->id}}">{{$department->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -48,8 +46,9 @@
                             <label>Select you class:</label>
                             <select class="custom-select form-control" id="class">
                                 <option value="" disabled>-Select Class-</option>
-                                <option value="CEE_M19">CEE M19</option>
-                                <option value="ADH_S21">ADH S21</option>
+                                @foreach($courses as $course)
+                                <option value="{{$course->id}}">{{$course->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

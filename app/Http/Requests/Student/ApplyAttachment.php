@@ -25,9 +25,9 @@ class ApplyAttachment extends FormRequest
     {
         return [
             "phone_number" => 'required',
-            "department" => "required",
+            "department_id" => "required|numeric|exists:departments,id",
             "dob" => 'required',
-            "sel_class" => "required",
+            "course_id" => "required|numeric|exists:courses,id",
             "alt_phone" => 'required',
             "attached_dep" => 'required',
             "org_email" => 'required',

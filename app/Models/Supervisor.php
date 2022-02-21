@@ -12,13 +12,22 @@ class Supervisor extends Model
     use SoftDeletes;
     protected $fillable = [
         'phone_number',
-        'department',
+        'course_id',
         'dob',
-        'class_name',
+        'department_id',
         'alt_phone'
     ];
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
     }
 }

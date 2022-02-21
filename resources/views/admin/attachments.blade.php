@@ -37,8 +37,8 @@
                     <td>{{$attachment->student->user->email}}</td>
                     <td>{{$attachment->student->phone_number}}</td>
                     <td>{{$attachment->student->dob}}</td>
-                    <td>{{$attachment->student->department}}</td>
-                    <td>{{$attachment->student->sel_class}}</td>
+                    <td>{{$attachment->student->department ? $attachment->student->department->name : ''}}</td>
+                    <td>{{$attachment->student->course ? $attachment->student->course->name : '' }}</td>
                     <td>{{$attachment->student->alt_phone}}</td>
                     <td>{{$attachment->attached_dep}}</td>
                     <td>{{$attachment->org_email}}</td>

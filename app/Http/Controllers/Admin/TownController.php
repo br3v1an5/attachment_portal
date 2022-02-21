@@ -32,72 +32,52 @@ class TownController extends Controller
                 $unallocated_towns[] = $un_town;
             }
         }
-        return view('attachment.allocate', compact('unallocated_towns'));
+        $towns_array = [];
+        foreach ($unallocated_towns as $mytown) {
+            $array = [
+                'name' => $mytown,
+                'amount' => 0
+            ];
+            $towns_array[] = $array;
+        }
+        return view('attachment.allocate', compact('towns_array'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function allocate(Request $request)
     {
-        //
+        foreach ($request->data as $town) {
+            $name = $town['name'];
+            $amount = $town['amount'];
+
+            Town::create([
+                'name' => $name,
+                'amount' => $amount
+            ]);
+
+            return response()->json(null, 201);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function show()
     {
-        //
+        $towns = Town::orderBy('created_at', 'Desc')->get();
+        return view('admin.towns.show', compact('towns'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Town $town)
     {
-        //
+        return view('admin.towns.edit', compact('town'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, Town $town)
     {
-        //
+        $town->update([
+            'amount' => $request->amount
+        ]);
+        return redirect(route('admin.towns.view'))->with('success', $town->name . ' Token Amount Updated Successfully');
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Town $town)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $name = $town->name;
+        $town->delete();
+        return redirect(route('admin.towns.view'))->with('warning', $name . ' Deleted Successfully');
     }
 }

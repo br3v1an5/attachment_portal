@@ -26,11 +26,13 @@
                 @if(auth()->user()->is_admin)
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Departments</span>
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Department & Courses</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{route('admin.department.create')}}">New</a></li>
-                        <li><a href="{{route('admin.department.index')}}">View </a></li>
+                        <li><a href="{{route('admin.department.create')}}">New Departent</a></li>
+                        <li><a href="{{route('admin.department.index')}}">View Departments </a></li>
+                        <li><a href="{{route('admin.course.create')}}">New Course </a></li>
+                        <li><a href="{{route('admin.course.index')}}">View Courses </a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -52,7 +54,8 @@
                     <ul class="submenu">
 
                         <li><a href="{{route('admin.attachments.index')}}">View All</a></li>
-                        <li><a href="{{route('admin.towns.create')}}">Town Tokens</a></li>
+                        <li><a href="{{route('admin.towns.view')}}">View Town Tokens</a></li>
+                        <li><a href="{{route('admin.towns.create')}}">Allocate Town Tokens</a></li>
                         <li><a href="{{route('admin.graphs')}}">Charts</a></li>
                     </ul>
                 </li>

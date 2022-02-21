@@ -39,10 +39,10 @@
                     <td>{{$student->supervisor->user->name}}</td>
                     <td>{{$student->phone_number}}</td>
                     <td>{{$student->attachment_application->town}}</td>
-                    <td>{{$student->department}}</td>
+                    <td>{{$student->department ? $student->department->name : '' }}</td>
                     <td>{{$student->user->email}}</td>
                     <td>{{$student->dob}}</td>
-                    <td>{{$student->sel_class}}</td>
+                    <td>{{$student->course ? $student->course->name : '' }}</td>
                     <td>{{$student->alt_phone}}</td>
                     <td>{{$student->attachment_application->attached_dep}}</td>
                     <td>{{$student->attachment_application->org_email}}</td>

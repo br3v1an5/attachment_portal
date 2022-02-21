@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Student\ApplyAttachment;
 use App\Mail\AttachmentSent as MailAttachmentSent;
 use App\Models\AttachmentApplication;
+use App\Models\Course;
+use App\Models\Department;
 use App\Notifications\AttachmentSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -34,7 +36,13 @@ class AttachmentApplicationController extends Controller
         if ($student != null) {
             return redirect(route('home'))->with('message', 'Attachment Application Exists For Your Account');
         }
-        return  view('attachment.create');
+        $departments = Department::select('name', 'id')->get();
+        $courses = Course::select('name', 'id')->get();
+        if ($departments->count() == 0 || $courses->count() == 0) {
+            return redirect(route('home'))->with('error', 'Sorry, We are currently not accepting applications at this time');
+        }
+
+        return  view('attachment.create', compact('departments', 'courses'));
     }
 
 
@@ -54,9 +62,9 @@ class AttachmentApplicationController extends Controller
         }
         $student = $user->student()->create([
             "phone_number" => $request->phone_number,
-            "department" => $request->department,
+            "department_id" => $request->department_id,
             "dob" => $request->dob,
-            "sel_class" => $request->sel_class,
+            "course_id" => $request->course_id,
             "alt_phone" => $request->alt_phone,
         ]);
         $attchment =  $student->attachment_application()->create([

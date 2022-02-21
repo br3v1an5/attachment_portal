@@ -4,6 +4,26 @@
 @endsection
 
 @section('content')
+
+@if($departments->count() == 0)
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <strong>Error</strong> Please Add Departments First by <a class="text-info" href="{{route('admin.department.create')}}">clicking here</a>
+</div>
+@endif
+@if($courses->count() ==0)
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <strong>Error</strong> Please Add Courses First by <a class="text-info" href="{{route('admin.course.create')}}">clicking here</a>
+</div>
+@endif
+
 <h5>Personal Information</h5>
 <div id="message_div"></div>
 <form id="supervisor_form">
@@ -45,12 +65,9 @@
                         <label>Select Department :</label>
                         <select class="custom-select form-control" required id="department">
                             <option value="" disabled>Select Department</option>
-                            <option value="MECHANICAL_AUTOMOTIVE">MECHANICAL / AUTOMOTIVE</option>
-                            <option value="BULDING_AND_CONSTRUCTION">BULDING AND CONSTRUCTION</option>
-                            <option value="ELECTRICAL_ENGINEERING">ELECTRICAL ENGINEERING</option>
-                            <option value="HOSPITALITY_AND_DIATETICS">HOSPITALITY AND DIATETICS</option>
-                            <option value="BUSINESS_STUDIES">BUSINESS STUDIES</option>
-                            <option value="APPLIED_AND_ENVIRONMENTAL_SCIENCE">APPLIED AND ENVIRONMENTAL SCIENCE</option>
+                            @foreach($departments as $department)
+                            <option value="{{$department->id}}">{{$department->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -67,8 +84,9 @@
                         <label>Select you class:</label>
                         <select class="custom-select form-control" id="class" required>
                             <option value="" disabled>-- Class --</option>
-                            <option value="CEE_M19">CEE M19</option>
-                            <option value="ADH_S21">ADH S21</option>
+                            @foreach($courses as $course)
+                            <option value="{{$course->id}}">{{$course->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

@@ -2,7 +2,18 @@
 @section('content')
 
 <div class="container-fluid">
-    <form>
+    @if(session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <strong>Success</strong> {{session()->get('success')}}
+    </div>
+    @endif
+    <h4 class="h4">Add A New Department</h4>
+    <form method="post" action="{{route('admin.department.store')}}">
+        @csrf
         <div class="form-group">
             <label for="name">Department Name</label>
             <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="data_info">

@@ -18,12 +18,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// Auth::routes(['register' => false]);
 Auth::routes();
+
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('/notifications/mark_as_read/{notice}', 'HomeController@markRead')->name('mark_note_read');
-    Route::apiResource('supervisor', SupervisorController::class);
+    // Route::apiResource('supervisor', SupervisorController::class);
     Route::prefix('student')->name('student.')->group(function () {
         Route::resource('attachment', Student\AttachmentApplicationController::class);
     });
@@ -34,6 +36,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/supervisors/attach_students', 'Admin\SupervisorAttachmentController@sync')->name('supervisor_student');
         Route::resource('supervisors', Admin\SupervisorController::class);
         Route::get('/towns/create', 'Admin\TownController@index')->name('towns.create');
+        Route::post('/towns/allocate_funds', 'Admin\TownController@allocate')->name('towns.allocate');
+        Route::get('towns/view', 'Admin\TownController@show')->name('towns.view');
+        Route::get('towns/edit/{town}', 'Admin\TownController@edit')->name('towns.edit');
+        Route::patch('towns/update/{town}', 'Admin\TownController@update')->name('towns.update');
+        Route::delete('towns/delete/{town}', 'Admin\TownController@destroy')->name('towns.destroy');
         Route::resource('department', Admin\DepartmentController::class);
+        Route::resource('course', Admin\CourseController::class);
     });
 });

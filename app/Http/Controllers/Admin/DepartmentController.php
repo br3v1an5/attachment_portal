@@ -15,7 +15,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::orderBy('created_at', 'desc')->get();
+        $departments = Department::orderBy('created_at', 'desc')->get();
+        return view('admin.department.index', compact('departments'));
     }
 
     /**
@@ -36,10 +37,11 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        return Department::create([
+        Department::create([
             'name' => $request->name,
             'initials' => $request->initials
         ]);
+        return redirect()->back()->with('success', 'Department Added Successfully');
     }
 
     /**
@@ -54,6 +56,17 @@ class DepartmentController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Course  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Department $department)
+    {
+        return view('admin.department.edit', compact('department'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,10 +75,11 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        return  $department->update([
+        $department->update([
             'name' => $request->name,
             'initials' => $request->initials
         ]);
+        return redirect()->back()->with('success', 'Department Updated Successfully');
     }
 
     /**
@@ -76,6 +90,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        return $department->delete();
+        $department->delete();
+        return redirect()->back()->with('warning', 'Department Deleted Successfully');
     }
 }

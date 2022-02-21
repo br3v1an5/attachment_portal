@@ -32,9 +32,9 @@ function formValidate(formId, formMsg) {
         lastname: $('#lastname').val(),
         email: $('#email').val(),
         phone_number: $('#phone_number').val(),
-        department: $('#department').val(),
+        department_id: $('#department').val(),
         dob: $('#dob').val(),
-        class_name: $('#class').val(),
+        course_id: $('#class').val(),
         alt_phone: $('#alt_phone').val(),
         _token: $('input[name="_token"]').val()
     }

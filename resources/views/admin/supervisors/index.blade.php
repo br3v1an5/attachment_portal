@@ -30,8 +30,8 @@
                     <td>{{$supervisor->user->email}}</td>
                     <td>{{$supervisor->phone_number}}</td>
                     <td>{{$supervisor->dob}}</td>
-                    <td>{{$supervisor->department}}</td>
-                    <td>{{$supervisor->class_name}}</td>
+                    <td>{{$supervisor->department ? $supervisor->department->name : '' }}</td>
+                    <td>{{$supervisor->course ? $supervisor->course->name : '' }}</td>
                     <td>{{$supervisor->alt_phone}}</td>
                 </tr>
                 @endforeach
