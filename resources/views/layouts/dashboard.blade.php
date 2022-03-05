@@ -61,7 +61,7 @@
                     <strong>Message</strong> {{session()->get('message')}}
                 </div>
                 @endif
-                @yield('content');
+                @yield('content')
 
 
             </div>
