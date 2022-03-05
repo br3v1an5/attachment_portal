@@ -49,10 +49,10 @@
                 @if(auth()->user()->is_admin || auth()->user()->is_supervisor)
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Attachments</span>
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Students & Attachments</span>
                     </a>
                     <ul class="submenu">
-
+                        <li><a href="{{route('admin.bulk_import')}}">Import Students</a></li>
                         <li><a href="{{route('admin.attachments.index')}}">View All</a></li>
                         <li><a href="{{route('admin.towns.view')}}">View Town Tokens</a></li>
                         <li><a href="{{route('admin.towns.create')}}">Allocate Town Tokens</a></li>

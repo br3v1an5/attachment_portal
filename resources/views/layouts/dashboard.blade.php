@@ -77,7 +77,7 @@
     <script src="/assets/vendors/scripts/process.js"></script>
     <script src="/assets/vendors/scripts/layout-settings.js"></script>
 
-    @yield('scripts');
+    @yield('scripts')
     <!-- <script src="/assets/js/apply.js"></script> -->
 </body>
 

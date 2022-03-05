@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\TownController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,5 +42,10 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('towns/delete/{town}', 'Admin\TownController@destroy')->name('towns.destroy');
         Route::resource('department', Admin\DepartmentController::class);
         Route::resource('course', Admin\CourseController::class);
+        Route::prefix('students')->group(function () {
+            Route::get('bulk_import', 'Admin\StudentImportController@create')->name('bulk_import');
+            Route::get('download_template', 'Admin\StudentImportController@template')->name('template');
+            Route::post('upload_template', 'Admin\StudentImportController@store')->name('upload_template');
+        });
     });
 });

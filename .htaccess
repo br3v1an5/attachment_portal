@@ -20,7 +20,8 @@
     RewriteRule ^ index.php [L]
 
     #Block All .files
-    location ~ /\. {
-        deny  all;
-    }
+   <Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
 </IfModule>
