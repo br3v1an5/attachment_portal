@@ -112,7 +112,7 @@ class StudentImportController extends Controller
     {
         $file = public_path('assets/templates/') . 'students_template.xlsx';
 
-        return response()->download($file, 'StudentTemplate.xlxs');
+        return response()->download($file, 'StudentTemplate.xlsx');
     }
 
     private function deleteFileFromServer($filePath)
