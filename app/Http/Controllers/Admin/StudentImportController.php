@@ -53,7 +53,7 @@ class StudentImportController extends Controller
         }
 
 
-        dd(User::all());
+        return redirect(route('admin.bulk_import'))->with('success', 'Students Imported Successfully');
     }
 
     /**
