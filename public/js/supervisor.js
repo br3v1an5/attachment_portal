@@ -33,8 +33,6 @@ function formValidate(formId, formMsg) {
         email: $('#email').val(),
         phone_number: $('#phone_number').val(),
         department_id: $('#department').val(),
-        dob: $('#dob').val(),
-        course_id: $('#class').val(),
         alt_phone: $('#alt_phone').val(),
         _token: $('input[name="_token"]').val()
     }

@@ -73,33 +73,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Date of Birth :</label>
-                        <input type="date" required class="form-control" placeholder="Select Date" id="dob" name="dob">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Select you class:</label>
-                        <select class="custom-select form-control" id="class" required>
-                            <option value="" disabled>-- Class --</option>
-                            @foreach($courses as $course)
-                            <option value="{{$course->id}}">{{$course->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
                         <label>Supervisor Alternative Phone Number :</label>
                         <input type="text" class="form-control" data-required id="alt_phone" name="alt_phone" required>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>National ID Number:</label>
-                        <input type="text" class="form-control" maxlength="12" data-required id="id_number" name="id_number" required>
                     </div>
                 </div>
             </div>

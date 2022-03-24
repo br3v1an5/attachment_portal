@@ -12,8 +12,6 @@ class Supervisor extends Model
     use SoftDeletes;
     protected $fillable = [
         'phone_number',
-        'course_id',
-        'dob',
         'department_id',
         'alt_phone'
     ];
@@ -25,9 +23,5 @@ class Supervisor extends Model
     public function department()
     {
         return $this->belongsTo(Department::class);
-    }
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
     }
 }

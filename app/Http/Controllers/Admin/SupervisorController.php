@@ -60,8 +60,6 @@ class SupervisorController extends Controller
             return  $user->supervisor()->create([
                 'phone_number' => $request->phone_number,
                 'department_id' => $request->department_id,
-                'dob' => $request->dob,
-                'course_id' => $request->course_id,
                 'alt_phone' => $request->alt_phone,
             ]);
         } else {

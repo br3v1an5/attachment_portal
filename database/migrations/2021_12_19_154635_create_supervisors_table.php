@@ -18,8 +18,6 @@ class CreateSupervisorsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('phone_number')->unique();
             $table->string('department');
-            $table->date('dob');
-            $table->string('class_name');
             $table->string('alt_phone');
             $table->timestamps();
             $table->softDeletes();

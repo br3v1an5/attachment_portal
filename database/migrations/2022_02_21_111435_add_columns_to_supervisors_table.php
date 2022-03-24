@@ -14,8 +14,7 @@ class AddColumnsToSupervisorsTable extends Migration
     public function up()
     {
         Schema::table('supervisors', function (Blueprint $table) {
-            $table->dropColumn(['department', 'class_name']);
-            $table->unsignedBigInteger('course_id')->nullable();
+            $table->dropColumn(['department']);
             $table->unsignedBigInteger('department_id')->nullable();
         });
     }
@@ -28,9 +27,8 @@ class AddColumnsToSupervisorsTable extends Migration
     public function down()
     {
         Schema::table('supervisors', function (Blueprint $table) {
-            $table->dropColumn(['course_id', 'department_id']);
+            $table->dropColumn(['department_id']);
             $table->string('department')->nullable();
-            $table->string('class_name')->nullable();
         });
     }
 }
