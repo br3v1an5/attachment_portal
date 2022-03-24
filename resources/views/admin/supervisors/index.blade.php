@@ -15,9 +15,7 @@
                     <th>Username</th>
                     <th>EMAIL</th>
                     <th>PHONE</th>
-                    <th>Date Of Birth</th>
                     <th>Department</th>
-                    <th>Class</th>
                     <th>Alternative Phone</th>
                 </tr>
             </thead>
@@ -29,9 +27,7 @@
                     <td>{{$supervisor->user->username}}</td>
                     <td>{{$supervisor->user->email}}</td>
                     <td>{{$supervisor->phone_number}}</td>
-                    <td>{{$supervisor->dob}}</td>
                     <td>{{$supervisor->department ? $supervisor->department->name : '' }}</td>
-                    <td>{{$supervisor->course ? $supervisor->course->name : '' }}</td>
                     <td>{{$supervisor->alt_phone}}</td>
                 </tr>
                 @endforeach
