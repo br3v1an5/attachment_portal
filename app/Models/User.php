@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'username',
         'is_supervisor',
-        'is_ilo'
+        'is_ilo',
+        'is_super_admin'
     ];
 
     /**
