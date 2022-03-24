@@ -46,7 +46,7 @@
                     </ul>
                 </li>
                 @endif
-                @if(auth()->user()->is_admin || auth()->user()->is_supervisor)
+                @if(auth()->user()->is_admin || auth()->user()->is_supervisor || auth()->user()->is_ilo)
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">Students & Attachments</span>
