@@ -59,7 +59,7 @@ class SupervisorController extends Controller
         if ($user != null) {
             return  $user->supervisor()->create([
                 'phone_number' => $request->phone_number,
-                '_id' => $request->department_id,
+                'department_id' => $request->department_id,
                 'dob' => $request->dob,
                 'course_id' => $request->course_id,
                 'alt_phone' => $request->alt_phone,

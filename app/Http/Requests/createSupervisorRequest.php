@@ -28,9 +28,9 @@ class createSupervisorRequest extends FormRequest
             'lastname' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|string',
-            'department' => 'required|string',
+            'department_id' => 'required|string',
             'dob' => 'date:before:today-18years',
-            'class_name' => 'required',
+            'course_id' => 'required',
             'alt_phone' => 'required|string',
         ];
     }
