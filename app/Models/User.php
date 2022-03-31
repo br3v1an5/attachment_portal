@@ -24,7 +24,8 @@ class User extends Authenticatable
         'username',
         'is_supervisor',
         'is_ilo',
-        'is_super_admin'
+        'is_super_admin',
+        'role'
     ];
 
 

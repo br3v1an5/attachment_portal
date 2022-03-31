@@ -50,7 +50,7 @@ class SupervisorController extends Controller
             return response()->json(['message' => 'Username ' . $uname . ' Already Exists'], 400);
         }
         $user = User::create([
-            'is_supervisor' => true,
+            'role' => 3,
             'name' => ucfirst($request->firstname) . ' ' . ucfirst($request->lastname),
             'email' => strtolower($request->email),
             'password' => Hash::make('ziwatti'),
