@@ -50,7 +50,11 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Enter current password</label>
-                            <input type="password" name="old_password" class="form-control">
+                            <input type="password" name="old_password" class="form-control  @error('password') is-invalid
+                            @enderror">
+                            @error('password')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                             @csrf
                         </div>
                     </div>

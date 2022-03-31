@@ -22,7 +22,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::middleware(['auth'])->group(function () {
     Route::get('notifications/mark_as_read/{notice}', 'HomeController@markRead')->name('mark_note_read');
     Route::get('profile', 'HomeController@profile')->name('profile');
-    Route::get('change_password', 'HomeController@change_password')->name('change_password');
+    Route::post('change_password', 'HomeController@change_password')->name('change_password');
 
     // Route::apiResource('supervisor', SupervisorController::class);
     Route::prefix('student')->name('student.')->group(function () {
