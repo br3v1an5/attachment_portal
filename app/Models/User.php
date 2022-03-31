@@ -27,6 +27,10 @@ class User extends Authenticatable
         'is_super_admin'
     ];
 
+
+    protected $appends = [
+        'user_role'
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -61,5 +65,28 @@ class User extends Authenticatable
     public function student()
     {
         return $this->hasOne(Student::class);
+    }
+    public function getUserRoleAttribute()
+    {
+        $role = $this->role;
+        switch ($role) {
+            case 1:
+                $r = 'Admin';
+                break;
+            case 2:
+                $r = 'Super Admin';
+                break;
+            case 3:
+                $r = 'Ilo';
+                break;
+            case 3:
+                $r = 'Supervisor';
+                break;
+
+            default:
+                $r = 'User';
+                break;
+        }
+        return $r;
     }
 }

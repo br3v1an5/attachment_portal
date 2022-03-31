@@ -17,7 +17,7 @@ class SuperAdmin
     public function handle(Request $request, Closure $next)
     {
         $user = auth()->user();
-        if ($user->is_super_admin == false) {
+        if (!$user->user_role == 'Super Admin') {
             abort(403, 'Permision Denied');
         }
         return $next($request);

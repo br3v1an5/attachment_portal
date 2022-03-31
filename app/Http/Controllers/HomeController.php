@@ -32,4 +32,9 @@ class HomeController extends Controller
         $notification->markAsRead();
         return redirect(route('home'))->with('message', 'Notification marked as read');
     }
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('profile', compact('user'));
+    }
 }

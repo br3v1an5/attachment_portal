@@ -17,7 +17,10 @@ class Ilo
     public function handle(Request $request, Closure $next)
     {
         $user = auth()->user();
-        if ($user->is_ilo == false && $user->is_admin == false && $user->is_super_admin == false) {
+        if ($user->user_role == 'Super Admin') {
+            return $next($request);
+        }
+        if ($user->user_role != 'Ilo') {
             abort(403, 'Permision Denied');
         }
         return $next($request);
