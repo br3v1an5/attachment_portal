@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('attachment', Student\AttachmentApplicationController::class);
     });
     Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('users', 'Admin\UserController');
         Route::get('/attachment/graphs_data', 'GraphController@index')->name('g_data')->middleware('ilo');
         Route::get('/attachment/graphs', 'GraphController@render')->name('graphs')->middleware('ilo');
         Route::resource('attachments', Admin\AttachmentApplicationController::class)->middleware(['ilo']);

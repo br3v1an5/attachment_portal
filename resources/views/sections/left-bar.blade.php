@@ -74,6 +74,23 @@
                         @endif
                     </ul>
                 </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">H.O.D</span>
+                    </a>
+                    <ul class="submenu">
+                        @if(auth()->user()->user_role =='Hod')
+                        <li><a href="{{route('admin.bulk_import')}}">Import Students</a></li>
+                        @endif
+                        @if(auth()->user()->user_role =='Admin' ||auth()->user()->user_role =='Super Admin')
+                        <li><a href="{{route('admin.users.create')}}">Add Users</a></li>
+                        @endif
+                        @if(!auth()->user()->user_role =='User')
+                        <li><a href="{{route('admin.towns.create')}}">View Students</a></li>
+                        @endif
+                    </ul>
+                </li>
                 @endif
 
 
