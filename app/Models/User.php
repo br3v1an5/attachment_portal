@@ -22,7 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
-        'role'
+        'role',
+        'department_id'
     ];
 
 
@@ -81,8 +82,8 @@ class User extends Authenticatable
                 $r = 'Supervisor';
                 break;
 
-            case 3:
-                $r = 'Head of Department';
+            case 4:
+                $r = 'Hod';
                 break;
 
             default:

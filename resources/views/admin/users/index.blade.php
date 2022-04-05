@@ -39,6 +39,6 @@
 <script src="{{asset('js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('js/responsive.bootstrap4.min.js')}}"></script>
 <script>
-    var dt = $('#thisTable').DataTable();
+    $('#thisTable').DataTable();
 </script>
 @endsection

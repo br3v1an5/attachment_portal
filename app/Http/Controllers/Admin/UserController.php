@@ -56,6 +56,7 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make('password'),
             'username' => $data['firstname'],
+            'department_id' => $data['department_id'],
             'role' => $data['role']
         ]);
         if ($data['role'] == 1) {

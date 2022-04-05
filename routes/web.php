@@ -30,23 +30,23 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', 'Admin\UserController');
-        Route::get('/attachment/graphs_data', 'GraphController@index')->name('g_data')->middleware('ilo');
-        Route::get('/attachment/graphs', 'GraphController@render')->name('graphs')->middleware('ilo');
+        Route::get('/attachment/graphs_data', 'GraphController@index')->name('g_data');
+        Route::get('/attachment/graphs', 'GraphController@render')->name('graphs');
         Route::resource('attachments', Admin\AttachmentApplicationController::class)->middleware(['ilo']);
         Route::get('/supervisors/attach_students', 'Admin\SupervisorAttachmentController@sync')->name('supervisor_student')->middleware('admin');
         Route::resource('supervisors', Admin\SupervisorController::class)->middleware('admin');
-        Route::get('/towns/create', 'Admin\TownController@index')->name('towns.create')->middleware('ilo');
-        Route::post('/towns/allocate_funds', 'Admin\TownController@allocate')->name('towns.allocate')->middleware('ilo');
+        Route::get('/towns/create', 'Admin\TownController@index')->name('towns.create')->middleware('admins');
+        Route::post('/towns/allocate_funds', 'Admin\TownController@allocate')->name('towns.allocate')->middleware('admins');
         Route::get('towns/view', 'Admin\TownController@show')->name('towns.view')->middleware('supervisor');
-        Route::get('towns/edit/{town}', 'Admin\TownController@edit')->name('towns.edit')->middleware('ilo');
+        Route::get('towns/edit/{town}', 'Admin\TownController@edit')->name('towns.edit')->middleware('admins');
         Route::patch('towns/update/{town}', 'Admin\TownController@update')->name('towns.update')->middleware('admin');
         Route::delete('towns/delete/{town}', 'Admin\TownController@destroy')->name('towns.destroy')->middleware('super_admin');
         Route::resource('department', Admin\DepartmentController::class)->middleware('admin');
-        Route::resource('course', Admin\CourseController::class)->middleware('admin');
+        Route::resource('course', Admin\CourseController::class)->middleware('admins');
         Route::prefix('students')->group(function () {
-            Route::get('bulk_import', 'Admin\StudentImportController@create')->name('bulk_import')->middleware(['admin']);
-            Route::get('download_template', 'Admin\StudentImportController@template')->name('template')->middleware(['admin']);
-            Route::post('upload_template', 'Admin\StudentImportController@store')->name('upload_template')->middleware(['admin']);
+            Route::get('bulk_import', 'Admin\StudentImportController@create')->name('bulk_import')->middleware(['admins']);
+            Route::get('download_template', 'Admin\StudentImportController@template')->name('template')->middleware(['admins']);
+            Route::post('upload_template', 'Admin\StudentImportController@store')->name('upload_template')->middleware(['admins']);
         });
     });
 });

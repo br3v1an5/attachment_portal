@@ -67,8 +67,10 @@
                         @if(auth()->user()->user_role =='Ilo')
                         <li><a href="{{route('admin.towns.create')}}">Allocate Town Tokens</a></li>
                         @endif
-                        @if(auth()->user()->user_role !=='User')
+                        @if(auth()->user()->user_role =='Ilo')
                         <li><a href="{{route('admin.attachments.index')}}">View All</a></li>
+                        @endif
+                        @if(auth()->user()->user_role !=='User')
                         <li><a href="{{route('admin.towns.view')}}">View Town Tokens</a></li>
                         <li><a href="{{route('admin.graphs')}}">Charts</a></li>
                         @endif
