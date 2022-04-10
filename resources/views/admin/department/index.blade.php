@@ -32,8 +32,10 @@
                 <td>{{$department->created_at}}</td>
                 <td>
                     <div style="display: flex;justify-content:space-between">
+                        @can('update', $department)
                         <a href="{{route('admin.department.edit',$department->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-
+                        @endcan
+                        @can('delete', $department)
                         <form method="post" action="{{route('admin.department.destroy',$department->id)}}">
                             @csrf
                             @method('DELETE')
@@ -42,6 +44,7 @@
                             </button>
 
                         </form>
+                        @endcan
                     </div>
                 </td>
             </tr>

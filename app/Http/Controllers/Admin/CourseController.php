@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateCourseRequest;
 use App\Models\Course;
+use CreateCoursesTable;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Course::class, 'course');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +42,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCourseRequest $request)
     {
         Course::create([
             'name' => $request->name,

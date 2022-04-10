@@ -1,8 +1,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="#">
-            <img src="/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-            <img src="/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+            <img src="/assets/vendors/images/ziwatti.jpg" class="dark-logo" style="height:72px; width: 72px; border-radius:22px; padding:2px; margin:2px">
+            <img src="/assets/vendors/images/ziwatti.jpg" class="light-logo" style="height:72px; width: 72px; border-radius:22px; padding:2px; margin:2px">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -28,14 +28,14 @@
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">Department & Courses</span>
                     </a>
                     <ul class="submenu">
-                        @if(auth()->user()->user_role =='Admin')
+                        @can('create',App\Models\Department::class)
                         <li><a href="{{route('admin.department.create')}}">New Departent</a></li>
+                        @endcan
                         <li><a href="{{route('admin.course.create')}}">New Course </a></li>
-                        @endif
-                        @if(auth()->user()->user_role !=='User')
+
                         <li><a href="{{route('admin.department.index')}}">View Departments </a></li>
                         <li><a href="{{route('admin.course.index')}}">View Courses </a></li>
-                        @endif
+
                     </ul>
                 </li>
 
@@ -45,52 +45,40 @@
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">Supervisors</span>
                     </a>
                     <ul class="submenu">
-                        @if(auth()->user()->user_role =='Admin')
+
                         <li><a href="{{route('admin.supervisors.create')}}">New Supervisor</a></li>
-                        @endif
-                        @if(auth()->user()->user_role !=='User')
+
                         <li><a href="{{route('admin.supervisors.index')}}">View Supervisors</a></li>
+                        <li><a href="{{route('admin.allocate_supervisor_student')}}">Allocate Supervisors</a></li>
                         <li><a href="{{route('admin.supervisor_student')}}">Students Supervisors</a></li>
-                        @endif
+
                     </ul>
                 </li>
 
 
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Students & Attachments</span>
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Attachments</span>
                     </a>
                     <ul class="submenu">
-                        @if(auth()->user()->user_role =='Admin')
-                        <li><a href="{{route('admin.bulk_import')}}">Import Students</a></li>
-                        @endif
-                        @if(auth()->user()->user_role =='Ilo')
                         <li><a href="{{route('admin.towns.create')}}">Allocate Town Tokens</a></li>
-                        @endif
-                        @if(auth()->user()->user_role =='Ilo')
-                        <li><a href="{{route('admin.attachments.index')}}">View All</a></li>
-                        @endif
-                        @if(auth()->user()->user_role !=='User')
+                        <li><a href="{{route('admin.attachments.index')}}">Received Applications</a></li>
                         <li><a href="{{route('admin.towns.view')}}">View Town Tokens</a></li>
                         <li><a href="{{route('admin.graphs')}}">Charts</a></li>
-                        @endif
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">H.O.D</span>
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">User Management</span>
                     </a>
                     <ul class="submenu">
-                        @if(auth()->user()->user_role =='Hod')
-                        <li><a href="{{route('admin.bulk_import')}}">Import Students</a></li>
-                        @endif
-                        @if(auth()->user()->user_role =='Admin' ||auth()->user()->user_role =='Super Admin')
+                        @can('create', App\Models\User::class)
                         <li><a href="{{route('admin.users.create')}}">Add Users</a></li>
-                        @endif
-                        @if(!auth()->user()->user_role =='User')
-                        <li><a href="{{route('admin.towns.create')}}">View Students</a></li>
-                        @endif
+                        <li><a href="{{route('admin.bulk_import')}}">Import Students</a></li>
+                        @endcan
+                        <li><a href="{{route('admin.users.index')}}">View Users</a></li>
+
                     </ul>
                 </li>
                 @endif

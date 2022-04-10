@@ -6,6 +6,14 @@
 
 @section('content')
 <div id="table">
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <a class="btn btn-success" href="{{route('admin.reports.pdfs.attachments')}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF </a>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-small btn-info"><i class="fa fa-file-excel-o" aria-hidden="true"></i> </a>
+        </div>
+    </div>
     <div class="adv-table">
         <table class="table table-striped  dt-responsive" id="thisTable">
             <thead class="thead-inverse">
@@ -32,6 +40,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach($students as $student)
                 <tr>
                     <td></td>

@@ -60,10 +60,10 @@
                         <label>Select Role</label>
                         <select class="custom-select form-control" required id="role">
                             <option value="0">Student</option>
-                            <option value="1">Supervisor</option>
-                            <option value="2">Administrator</option>
+                            <option value="1">Administrator</option>
                             <option value="3">Ilo Officer</option>
-                            <option value="4">H.O.D</option>
+                            <option value="4">Supervisor</option>
+                            <option value="5">H.O.D</option>
                         </select>
                     </div>
                 </div>

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Department::class, 'department');
+    }
     /**
      * Display a listing of the resource.
      *

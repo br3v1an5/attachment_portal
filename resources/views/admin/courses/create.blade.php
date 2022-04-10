@@ -16,12 +16,18 @@
         @csrf
         <div class="form-group">
             <label for="name">Course Name</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="data_info">
+            <input type="text" name="name" id="name" class="form-control" placeholder="" value="{{old('name')}}" aria-describedby="data_info">
+            @error('name')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
             <small id="data_info" class="text-muted">Course Name</small>
         </div>
         <div class="form-group">
             <label for="initials">Course Short</label>
-            <input type="text" name="short_name" id="initials" class="form-control" placeholder="SIK-345" aria-describedby="initials_help">
+            <input type="text" name="short_name" id="initials" class="form-control" value="{{old('short_name')}}" placeholder="SIK-345" aria-describedby="initials_help">
+            @error('short_name')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
             <small id="initials_help" class="text-muted">Course Short name or initials</small>
         </div>
         <button type="submit" class="btn btn-success">Add Course</button>

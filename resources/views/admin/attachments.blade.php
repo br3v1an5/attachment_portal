@@ -1,10 +1,19 @@
 @extends('layouts.dashboard')
 @section('styles')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}">
 @endsection
 
 @section('content')
+<div class="row justify-content-center">
+    <div class="col-md-3">
+        <a class="btn btn-success" href="{{route('admin.reports.pdfs.attachments')}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF </a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-info" href="{{route('admin.reports.xlxs.attachments')}}><i class=" fa fa-file-excel-o" aria-hidden="true"></i>XLXS </a>
+    </div>
+</div>
 <div id="table">
     <div class="adv-table">
         <table class="table table-striped  dt-responsive" id="thisTable">

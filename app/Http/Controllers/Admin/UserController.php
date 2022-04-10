@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateUserRequest;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use League\CommonMark\Normalizer\SlugNormalizer;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,23 +44,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        $data = $request->validate([
-            'firstname' => 'required|string|max:115',
-            'lastname' => 'required|string|max:115',
-            'email' => 'required|unique:users|email|max:255',
-            'phone_number' => 'required|digits:10',
-            'department_id' => 'required',
-            'alt_phone' => 'required|digits:10',
-            'role' => 'required'
-        ]);
+        $data = $request->validated();
         $name = $data['firstname'] . ' ' . $data['lastname'];
         $user =  User::create([
             'name' => $name,
             'email' => $data['email'],
             'password' => Hash::make('password'),
-            'username' => $data['firstname'],
+            'username' => Str::slug($name, "_"),
             'department_id' => $data['department_id'],
             'role' => $data['role']
         ]);
@@ -111,6 +108,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->back()->with('success', 'User Deleted');
     }
 }

@@ -37,7 +37,10 @@
                 <td>{{$course->created_at}}</td>
                 <td>
                     <div style="display:flex;justify-content:space-between">
+                        @can('update',$course)
                         <a href="{{route('admin.course.edit',$course->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        @endcan
+                        @can('delete',$course)
                         <form method="post" action="{{route('admin.course.destroy',$course->id)}}">
                             @csrf
                             @method('DELETE')
@@ -46,6 +49,7 @@
                             </button>
 
                         </form>
+                        @endcan
                     </div>
                 </td>
             </tr>

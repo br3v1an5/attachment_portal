@@ -17,21 +17,64 @@ class SupervisorAttachmentController extends Controller
 {
     public function sync()
     {
+        // $students_with_no_supervisor = Student::doesntHave('supervisor')->get();
+        // $supervisors = Supervisor::all();
+        // foreach ($students_with_no_supervisor as $student) {
+        //     $randomSupervisor = $supervisors->random();
+        //     $student->supervisor_id = $randomSupervisor->id;
+        //     $student->save();
+        //     try {
+        //         Mail::to($student->user->email)->send(new SupervisorAllocated($randomSupervisor, $student));
+        //         Mail::to($randomSupervisor->user->email)->send(new StudentAllocated($randomSupervisor, $student));
+        //     } catch (\Throwable $th) {
+        //         //throw $th;
+        //     }
+        // }
+
+        $students = Student::has('supervisor')->get();
+        return view('attachment.student_supervisor', compact('students'));
+    }
+    public function allocate()
+    {
         $students_with_no_supervisor = Student::doesntHave('supervisor')->get();
-        $supervisors = Supervisor::all();
-        foreach ($students_with_no_supervisor as $student) {
-            $randomSupervisor = $supervisors->random();
-            $student->supervisor_id = $randomSupervisor->id;
-            $student->save();
-            try {
-                Mail::to($student->user->email)->send(new SupervisorAllocated($randomSupervisor, $student));
-                Mail::to($randomSupervisor->user->email)->send(new StudentAllocated($randomSupervisor, $student));
-            } catch (\Throwable $th) {
-                //throw $th;
+        $supervisors = Supervisor::has('user')->with('user')->get();
+        $towns = [];
+        foreach ($students_with_no_supervisor as $student_with_no_supervisor) {
+            $application = $student_with_no_supervisor->attachment_application;
+            $town = $application->town;
+            if (!in_array($town, $towns)) {
+                $towns[] = $town;
+            }
+        }
+        // dd($supervisors);
+        return view('admin.supervisors.allocate', compact('towns', 'supervisors'));
+    }
+    public function allocateSupervisors(Request $request)
+    {
+        $request->validate([
+            'towns' => 'required|array|min:1'
+        ]);
+
+        foreach ($request->towns as $town) {
+            $town_name = $town['name'];
+            $supervisors = $town['supervisors'];
+            $students_with_no_supervisor = Student::has('attachment_application')->doesntHave('supervisor')->get();
+            foreach ($students_with_no_supervisor as $student) {
+                if ($student->attachment_application->town == $town_name) {
+                    $supervisor_id = collect($supervisors)->random();
+                    $randomSupervisor = Supervisor::find($supervisor_id);
+                    $student->supervisor_id = $supervisor_id;
+                    $student->save();
+                    try {
+                        Mail::to($student->user->email)->send(new SupervisorAllocated($randomSupervisor, $student));
+                        Mail::to($randomSupervisor->user->email)->send(new StudentAllocated($randomSupervisor, $student));
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+                }
             }
         }
 
-        $students = Student::all();
-        return view('attachment.student_supervisor', compact('students'));
+        return response()->json(null, 201);
     }
 }

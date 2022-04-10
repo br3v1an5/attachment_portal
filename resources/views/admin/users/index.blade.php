@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+@if(session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <strong>Success</strong> {{session()->get('success')}}
+</div>
+@endif
 <div id="table">
     <div class="adv-table">
         <table class="table table-striped  dt-responsive" id="thisTable">
@@ -15,6 +24,7 @@
                     <th>Username</th>
                     <th>EMAIL</th>
                     <th>Role</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +35,18 @@
                     <td>{{$user->username}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->user_role}}</td>
+                    <th>
+                        @can('delete', $user)
+                        <form method="post" action="{{route('admin.users.destroy',$user->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                            </button>
+
+                        </form>
+                        @endcan
+                    </th>
                 </tr>
                 @endforeach
             </tbody>

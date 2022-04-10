@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Hash;
 
 class SupervisorController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Supervisor::class, 'supervisor');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +24,7 @@ class SupervisorController extends Controller
      */
     public function index()
     {
-        $supervisors = Supervisor::orderBy('created_at', 'desc')->get();
+        $supervisors = Supervisor::has('user')->orderBy('created_at', 'desc')->get();
         return view('admin.supervisors.index', compact('supervisors'));
     }
 

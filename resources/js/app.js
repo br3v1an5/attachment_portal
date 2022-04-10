@@ -31,6 +31,7 @@ import 'view-design/dist/styles/iview.css';
 
 
 Vue.component('Allocator', require('./components/Allocator.vue').default);
+Vue.component('TownAllocator', require('./components/TownAllocator.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
