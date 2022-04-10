@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 
 class AttachmentApplicationController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($year = null)
     {
-        $attachments = AttachmentApplication::orderBy('created_at', 'ASC')->get();
+        $year = $year == null ?   now()->year : $year;
+        $attachments = AttachmentApplication::orderBy('created_at', 'ASC')->whereYear('created_at', $year)->get();
         return view('admin.attachments', compact('attachments'));
     }
 

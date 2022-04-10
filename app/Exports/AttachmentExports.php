@@ -9,12 +9,19 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class AttachmentExports implements FromCollection, WithHeadings, WithMapping
 {
+    public $year;
+    public function __construct($year = null)
+    {
+        $this->year = $year;
+    }
+
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return AttachmentApplication::all();
+        $year =  $this->year == null ?   now()->year : $this->year;
+        return AttachmentApplication::whereYear('created_at', $year)->get();
     }
 
     /**

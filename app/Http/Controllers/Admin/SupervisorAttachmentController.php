@@ -5,33 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\StudentAllocated;
 use App\Mail\SupervisorAllocated;
-use App\Models\AttachmentApplication;
+
 use App\Models\Student;
 use App\Models\Supervisor;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
+
+use Illuminate\Database\Eloquent\Builder;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class SupervisorAttachmentController extends Controller
 {
-    public function sync()
-    {
-        // $students_with_no_supervisor = Student::doesntHave('supervisor')->get();
-        // $supervisors = Supervisor::all();
-        // foreach ($students_with_no_supervisor as $student) {
-        //     $randomSupervisor = $supervisors->random();
-        //     $student->supervisor_id = $randomSupervisor->id;
-        //     $student->save();
-        //     try {
-        //         Mail::to($student->user->email)->send(new SupervisorAllocated($randomSupervisor, $student));
-        //         Mail::to($randomSupervisor->user->email)->send(new StudentAllocated($randomSupervisor, $student));
-        //     } catch (\Throwable $th) {
-        //         //throw $th;
-        //     }
-        // }
 
-        $students = Student::has('supervisor')->get();
+    public function sync($year = null)
+    {
+        $students = Student::has('supervisor')->whereHas('attachment_application', function (Builder $q) use ($year) {
+            $year = $year == null ?   now()->year : $year;
+            $q->whereYear('created_at', $year);
+        })->get();
         return view('attachment.student_supervisor', compact('students'));
     }
     public function allocate()

@@ -2,20 +2,30 @@
 
 namespace App\Exports;
 
-use App\Models\AttachmentApplication;
+
 use App\Models\Student;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
 class SupervisorStudentExport implements FromCollection, WithHeadings, WithMapping
 {
+    public $year;
+    public function __construct($year = null)
+    {
+        $this->year = $year;
+    }
+
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return Student::has('supervisor')->get();
+        $year =  $this->year == null ?   now()->year : $this->year;
+        return Student::has('supervisor')->whereHas('attachment_application', function (Builder $q) use ($year) {
+            $q->whereYear('created_at', $year);
+        })->get();
     }
 
     /**
