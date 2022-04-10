@@ -11,7 +11,8 @@
             <a class="btn btn-success" href="{{route('admin.reports.pdfs.supervisor_stude')}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF </a>
         </div>
         <div class="col-md-3">
-            <!-- <a class="btn btn-small btn-info"><i class="fa fa-file-excel-o" aria-hidden="true"></i> </a> -->
+            <a class="btn btn-info" href="{{route('admin.reports.xlxs.supervisor_stude')}}"><i class="fa fa-file-excel-o" aria-hidden="true"></i> XLXS </a>
+
         </div>
     </div>
     <div class="adv-table">

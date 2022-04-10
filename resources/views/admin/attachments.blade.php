@@ -11,7 +11,7 @@
         <a class="btn btn-success" href="{{route('admin.reports.pdfs.attachments')}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF </a>
     </div>
     <div class="col-md-3">
-        <a class="btn btn-info" href="{{route('admin.reports.xlxs.attachments')}}><i class=" fa fa-file-excel-o" aria-hidden="true"></i>XLXS </a>
+        <a class="btn btn-info" href="{{route('admin.reports.xlxs.attachments')}}"><i class=" fa fa-file-excel-o" aria-hidden="true"></i>XLXS </a>
     </div>
 </div>
 <div id="table">

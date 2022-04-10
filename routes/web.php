@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
             });
             Route::prefix('xlxs')->name('xlxs.')->group(function () {
                 Route::get('/attachments', 'XlsReportsController@attachments')->name('attachments');
+                Route::get('/supervisor', 'XlsReportsController@student_supervisor')->name('supervisor_stude');
             });
         });
         Route::prefix('students')->group(function () {
