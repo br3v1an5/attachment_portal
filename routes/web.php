@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('reports')->name('reports.')->group(function () {
             Route::prefix('pdfs')->name('pdfs.')->group(function () {;
                 Route::get('/attachments', 'ReportsController@attachments')->name('attachments');
+                Route::get('/supervisor', 'ReportsController@supervisor')->name('supervisor_stude');
             });
             Route::prefix('xlxs')->name('xlxs.')->group(function () {
                 Route::get('/attachments', 'XlsReportsController@attachments')->name('attachments');
