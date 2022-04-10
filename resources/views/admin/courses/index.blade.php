@@ -40,6 +40,9 @@
                         @can('update',$course)
                         <a href="{{route('admin.course.edit',$course->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                         @endcan
+                        @can('viewAny',App\Models\Student::class)
+                        <a href="{{route('admin.students.course',$course->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Students {{$course->students->count()}}</a>
+                        @endcan
                         @can('delete',$course)
                         <form method="post" action="{{route('admin.course.destroy',$course->id)}}">
                             @csrf

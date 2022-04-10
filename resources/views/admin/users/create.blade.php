@@ -23,16 +23,22 @@
         <div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>First Name :</label>
                         <input type="text" class="form-control" required id="firstname" name="firstname">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Last Name :</label>
                         <input type="text" class="form-control" required id="lastname" name="lastname">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Registration Number :</label>
+                        <input type="text" class="form-control" required id="reg_number" name="reg_number">
                     </div>
                 </div>
             </div>
@@ -59,11 +65,17 @@
                     <div class="form-group">
                         <label>Select Role</label>
                         <select class="custom-select form-control" required id="role">
+                            @can('create', App\User::class)
                             <option value="0">Student</option>
+                            @endcan
+                            @if(in_array(Auth::user()->role, [2]))
                             <option value="1">Administrator</option>
+                            @endif
+                            @if(in_array(Auth::user()->role, [1,2]))
                             <option value="3">Ilo Officer</option>
                             <option value="4">Supervisor</option>
                             <option value="5">H.O.D</option>
+                            @endif
                         </select>
                     </div>
                 </div>

@@ -34,7 +34,8 @@ function formValidate(formId, formMsg) {
         department_id: $('#department').val(),
         alt_phone: $('#alt_phone').val(),
         _token: $('input[name="_token"]').val(),
-        role: $('#role').val()
+        role: $('#role').val(),
+        reg_number: $('#reg_number').val(),
     }
 
     $.ajax({

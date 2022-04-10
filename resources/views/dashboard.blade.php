@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-xl-8 mb-30">
             <div class="card-box height-100-p pd-20">
                 <h2 class="h4 mb-20">Activity</h2>
@@ -91,7 +91,7 @@
                 <div id="chart6"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 @endsection
 

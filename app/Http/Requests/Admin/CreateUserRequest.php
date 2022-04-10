@@ -30,7 +30,8 @@ class CreateUserRequest extends FormRequest
             'phone_number' => 'required|digits:10',
             'department_id' => 'required',
             'alt_phone' => 'required|digits:10',
-            'role' => 'required'
+            'role' => 'required',
+            'reg_number' => 'required|unique:users,username|max:255',
         ];
     }
 }

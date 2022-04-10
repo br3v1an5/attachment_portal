@@ -48,13 +48,16 @@ Route::middleware(['auth'])->group(function () {
             Route::prefix('pdfs')->name('pdfs.')->group(function () {;
                 Route::get('/attachments', 'ReportsController@attachments')->name('attachments');
                 Route::get('/supervisor', 'ReportsController@supervisor')->name('supervisor_stude');
+                Route::get('/students/{course}', 'ReportsController@student_course')->name('student_course');
             });
             Route::prefix('xlxs')->name('xlxs.')->group(function () {
                 Route::get('/attachments', 'XlsReportsController@attachments')->name('attachments');
                 Route::get('/supervisor', 'XlsReportsController@student_supervisor')->name('supervisor_stude');
+                Route::get('/students/{course}', 'XlsReportsController@student_course')->name('student_course');
             });
         });
         Route::prefix('students')->group(function () {
+            Route::get('course/{course}', 'Admin\StudentController@index')->name('students.course');
             Route::get('bulk_import', 'Admin\StudentImportController@create')->name('bulk_import');
             Route::get('download_template', 'Admin\StudentImportController@template')->name('template');
             Route::post('upload_template', 'Admin\StudentImportController@store')->name('upload_template');

@@ -1,9 +1,9 @@
 <div class="footer-wrap pd-20 mb-20 card-box">
-    POWERED BY TREESTATE AFRICA- <a href="https://ziwatti.ac.ke" target="_blank">EMPOWERING COMMINICATION </a>
+    POWERED BY <a href="https://treestate.ac.ke" target="_blank">TREESTATE AFRICA-EMPOWERING COMMINICATION </a>
     <br>
     <centre>
         <h5>
-            Version 1.0
+            Version 2.0
         </h5>
     </centre>
 

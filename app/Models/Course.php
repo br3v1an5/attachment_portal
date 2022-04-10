@@ -14,4 +14,8 @@ class Course extends Model
         'name',
         'short_name'
     ];
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

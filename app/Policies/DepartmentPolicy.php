@@ -18,7 +18,7 @@ class DepartmentPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return  in_array($user->user_role, ['Admin', 'Super Admin', 'Ilo']);
     }
 
     /**
@@ -30,7 +30,7 @@ class DepartmentPolicy
      */
     public function view(User $user, Department $department)
     {
-        return $user->user_role != 'User';
+        return  in_array($user->user_role, ['Admin', 'Super Admin']);
     }
 
     /**
@@ -41,7 +41,7 @@ class DepartmentPolicy
      */
     public function create(User $user)
     {
-        return $user->user_role != "User";
+        return  in_array($user->user_role, ['Admin', 'Super Admin']);
     }
 
     /**
@@ -53,7 +53,7 @@ class DepartmentPolicy
      */
     public function update(User $user, Department $department)
     {
-        return $user->user_role != "User";
+        return  in_array($user->user_role, ['Admin', 'Super Admin']);
     }
 
     /**

@@ -24,11 +24,12 @@
                     <th>Username</th>
                     <th>EMAIL</th>
                     <th>Role</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($users as $user)
+                @can('view', $user)
                 <tr>
                     <td></td>
                     <td>{{$user->name}}</td>
@@ -48,6 +49,7 @@
                         @endcan
                     </th>
                 </tr>
+                @endcan
                 @endforeach
             </tbody>
         </table>

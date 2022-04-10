@@ -32,14 +32,15 @@
                         <li><a href="{{route('admin.department.create')}}">New Departent</a></li>
                         @endcan
                         <li><a href="{{route('admin.course.create')}}">New Course </a></li>
-
+                        @can('viewAny',App\Models\Department::class)
                         <li><a href="{{route('admin.department.index')}}">View Departments </a></li>
+                        @endcan
                         <li><a href="{{route('admin.course.index')}}">View Courses </a></li>
 
                     </ul>
                 </li>
 
-
+                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin']))
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">Supervisors</span>
@@ -54,8 +55,8 @@
 
                     </ul>
                 </li>
-
-
+                @endif
+                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Ilo']))
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">Attachments</span>
@@ -67,18 +68,19 @@
                         <li><a href="{{route('admin.graphs')}}">Charts</a></li>
                     </ul>
                 </li>
+                @endif
 
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">User Management</span>
                     </a>
                     <ul class="submenu">
-                        @can('create', App\Models\User::class)
+                        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Hod']))
                         <li><a href="{{route('admin.users.create')}}">Add Users</a></li>
                         <li><a href="{{route('admin.bulk_import')}}">Import Students</a></li>
-                        @endcan
                         <li><a href="{{route('admin.users.index')}}">View Users</a></li>
 
+                        @endif
                     </ul>
                 </li>
                 @endif

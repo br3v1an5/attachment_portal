@@ -52,7 +52,7 @@ class UserController extends Controller
             'name' => $name,
             'email' => $data['email'],
             'password' => Hash::make('password'),
-            'username' => Str::slug($name, "_"),
+            'username' => $data['reg_number'],
             'department_id' => $data['department_id'],
             'role' => $data['role']
         ]);
