@@ -34,6 +34,6 @@ class SupervisorAllocated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.student.supervisor_allocated');
+        return $this->markdown('emails.student.supervisor_allocated');
     }
 }
