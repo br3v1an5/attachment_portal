@@ -1,5 +1,5 @@
 <div class="footer-wrap pd-20 mb-20 card-box">
-    Designed and Managed <a href="https://ziwatti.ac.ke" target="_blank">By Treestate Capital Africa</a>
+    POWERED BY TREESTATE AFRICA- <a href="https://ziwatti.ac.ke" target="_blank">EMPOWERING COMMINICATION </a>
     <br>
     <centre>
         <h5>
