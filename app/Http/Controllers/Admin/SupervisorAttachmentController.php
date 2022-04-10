@@ -60,7 +60,7 @@ class SupervisorAttachmentController extends Controller
                         Mail::to($student->user->email)->send(new SupervisorAllocated($randomSupervisor, $student));
                         Mail::to($randomSupervisor->user->email)->send(new StudentAllocated($randomSupervisor, $student));
                     } catch (\Throwable $th) {
-                        //throw $th;
+                        Log::info($th);
                     }
                 }
             }
