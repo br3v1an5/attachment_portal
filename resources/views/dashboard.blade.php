@@ -24,74 +24,78 @@
             </div>
         </div>
     </div>
+    @if(auth()->user()->user_role !=="User")
     <div class="row">
+        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin']))
         <div class="col-xl-3 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
-                    <div class="progress-data">
-                        <div id="chart"></div>
-                    </div>
-                    <div class="widget-data">
-                        <div class="h4 mb-0"><small>loading..</small></div>
-                        <div class="weight-600 font-14">Supervisors</div>
-                    </div>
+                    <a href="{{route('admin.supervisors.index')}}" class="btn btn-sm btn-primary w-100">Supervisors</a>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Ilo']))
+        <div class="col-xl-3 mb-30">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <a href="{{route('admin.attachments.index')}}" class="btn btn-sm btn-danger w-100">Received Attachments ({{App\Models\AttachmentApplication::count()}})</a>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin']))
+        <div class="col-xl-3 mb-30">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <a href="{{route('admin.allocate_supervisor_student')}}" class="btn btn-sm btn-success w-100">Allocate Supervisors</a>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Hod']))
+        <div class="col-xl-3 mb-30">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <a href="{{route('admin.users.index')}}" class="btn btn-sm btn-info w-100">Students ({{App\Models\Student::count()}})</a>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
-                    <div class="progress-data">
-                        <div id="chart2"></div>
-                    </div>
-                    <div class="widget-data">
-                        <div class="h4 mb-0"><small>loading..</small></div>
-                        <div class="weight-600 font-14">Students</div>
-                    </div>
+                    <a href="{{route('admin.course.create')}}" class="btn font-weight-bold btn-sm btn-danger w-100">Add Course</a>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
-                    <div class="progress-data">
-                        <div id="chart3"></div>
-                    </div>
-                    <div class="widget-data">
-                        <div class="h4 mb-0"><small>loading..</small></div>
-                        <div class="weight-600 font-14">Applications</div>
-                    </div>
+                    <a href="{{route('admin.bulk_import')}}" class="btn btn-sm btn-success w-100">Import Students</a>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
-                    <div class="progress-data">
-                        <div id="chart4"></div>
-                    </div>
-                    <div class="widget-data">
-                        <div class="h4 mb-0"><small>loading..</small></div>
-                        <div class="weight-600 font-14">Towns</div>
-                    </div>
+                    <a href="{{route('admin.course.index')}}" class="btn font-weight-bold btn-sm btn-warning w-100">View Courses ({{App\Models\Course::count()}})</a>
                 </div>
             </div>
         </div>
+        @endif
     </div>
-    <!-- <div class="row">
-        <div class="col-xl-8 mb-30">
-            <div class="card-box height-100-p pd-20">
-                <h2 class="h4 mb-20">Activity</h2>
-                <div id="chart5"></div>
+    @else
+    <div class="row">
+        <div class="col-xl-12 mb-30">
+            <div class="card-box height-100-p widget-style1">
+                <button type="button" class="btn btn-outline-primary">Update Profile</button>
+                <button type="button" class="btn btn-outline-info">Submit Attachment Details</button>
             </div>
         </div>
-        <div class="col-xl-4 mb-30">
-            <div class="card-box height-100-p pd-20">
-                <h2 class="h4 mb-20">Lead Target</h2>
-                <div id="chart6"></div>
-            </div>
-        </div>
-    </div> -->
+
+
+    </div>
+    @endif
 </div>
 @endsection
 
