@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 // Auth::routes();
-
+Route::post('/upload_file', 'FileUploadController@saveFile');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('notifications/mark_as_read/{notice}', 'HomeController@markRead')->name('mark_note_read');
