@@ -88,8 +88,8 @@
     <div class="row">
         <div class="col-xl-12 mb-30">
             <div class="card-box height-100-p widget-style1">
-                <button type="button" class="btn btn-outline-primary">Update Profile</button>
-                <button type="button" class="btn btn-outline-info">Submit Attachment Details</button>
+                <a href="/profile" class="btn btn-outline-primary">Update Profile</a>
+                <a href="{{route('student.attachment.create')}}" class="btn btn-outline-info">Submit Attachment Details</a>
             </div>
         </div>
 
