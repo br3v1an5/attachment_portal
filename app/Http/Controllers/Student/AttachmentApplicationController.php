@@ -79,6 +79,7 @@ class AttachmentApplicationController extends Controller
             "longitude" => $request->longitude,
             "remark" => $request->remark,
             "town" => $request->town,
+            'service_number' => $request->service_number ? $request->service_number : null
         ]);
         $user->notify(new AttachmentSent($attchment, $student));
         Mail::to($student->user->email)->send(new MailAttachmentSent($student));

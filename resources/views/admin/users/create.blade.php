@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label>Select Role</label>
                         <select class="custom-select form-control" required id="role">
-                            @can('create', App\User::class)
+                            @can('create', App\Models\User::class)
                             <option value="0">Student</option>
                             @endcan
                             @if(in_array(Auth::user()->role, [2]))
@@ -73,9 +73,12 @@
                             @endif
                             @if(in_array(Auth::user()->role, [1,2]))
                             <option value="3">Ilo Officer</option>
-                            <option value="4">Supervisor</option>
                             <option value="5">H.O.D</option>
                             @endif
+
+                            @can('create', App\Models\Supervisor::class)
+                            <option value="4">Assesor</option>
+                            @endcan
                         </select>
                     </div>
                 </div>

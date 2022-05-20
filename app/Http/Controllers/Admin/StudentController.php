@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -89,5 +90,12 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function pending()
+    {
+        $students = User::where('role', 0)->doesntHave('student')->get();
+        // $students = Student::doesntHave('attachment_application')->get();
+        return view('admin.students.pending', compact('students'));
     }
 }

@@ -1,32 +1,40 @@
 @extends('layouts.dashboard')
 @section('styles')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}">
 @endsection
 
 @section('content')
+@if($students->count() > 0)
+<!-- Buttons -->
+@endif
 <div id="table">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">ZIWA TTI</h3>
+            <h3 class="text-center">Students Yet to fill attachment applications</h3>
+        </div>
+    </div>
     <div class="adv-table">
         <table class="table table-striped  dt-responsive" id="thisTable">
             <thead class="thead-inverse">
                 <tr>
                     <th></th>
-                    <th>FULL NAME</th>
-                    <th>Username</th>
-                    <th>EMAIL</th>
-                    <th>PHONE</th>
-                    <th>Alternative Phone</th>
+                    <th>Names</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>REG Number</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($supervisors as $supervisor)
+                @foreach($students as $student)
                 <tr>
                     <td></td>
-                    <td>{{$supervisor->user->name}}</td>
-                    <td>{{$supervisor->user->username}}</td>
-                    <td>{{$supervisor->user->email}}</td>
-                    <td>{{$supervisor->phone_number}}</td>
-                    <td>{{$supervisor->alt_phone}}</td>
+                    <td>{{$student->name}}</td>
+                    <td>{{$student->email}}</td>
+                    <td>{{$student->department ? $student->department->name : ''}}</td>
+                    <td>{{$student->username}}</td>
                 </tr>
                 @endforeach
             </tbody>

@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('attachment', Student\AttachmentApplicationController::class);
     });
     Route::prefix('admin')->middleware('admins')->name('admin.')->group(function () {
+        Route::get('settings', 'Admin\SettingsController@show')->name('settings.show');
+        Route::post('settings', 'Admin\SettingsController@save')->name('settings.save');
         Route::get('locations', 'Admin\TownController@map');
         Route::resource('users', 'Admin\UserController');
         Route::get('/attachment/graphs_data', 'GraphController@index')->name('g_data');
@@ -36,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/supervisors_attach_students', 'Admin\SupervisorAttachmentController@allocate')->name('allocate_supervisor_student');
         Route::get('/supervisors/attach_students', 'Admin\SupervisorAttachmentController@sync')->name('supervisor_student');
         Route::resource('supervisors', Admin\SupervisorController::class);
+        Route::get('department_assesors/{department}', 'Admin\SupervisorController@assesors')->name('department.assesors');
         Route::get('/towns/create', 'Admin\TownController@index')->name('towns.create');
         Route::post('/towns/allocate_funds', 'Admin\TownController@allocate')->name('towns.allocate');
         Route::post('/towns/allocate_supervisors', 'Admin\SupervisorAttachmentController@allocateSupervisors')->name('towns.allocate.supervisors');
@@ -44,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('towns/update/{town}', 'Admin\TownController@update')->name('towns.update');
         Route::delete('towns/delete/{town}', 'Admin\TownController@destroy')->name('towns.destroy');
         Route::resource('department', Admin\DepartmentController::class);
+        Route::get('department_students/{department}', 'Admin\DepartmentController@students')->name('department.students');
+        Route::get('all_department_students', 'Admin\DepartmentController@all_students');
         Route::resource('course', Admin\CourseController::class);
         Route::prefix('reports')->name('reports.')->group(function () {
             Route::prefix('pdfs')->name('pdfs.')->group(function () {;
@@ -59,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::prefix('students')->group(function () {
             Route::get('course/{course}', 'Admin\StudentController@index')->name('students.course');
+            Route::get('pending_applicants', 'Admin\StudentController@pending')->name('students.pending');
             Route::get('bulk_import', 'Admin\StudentImportController@create')->name('bulk_import');
             Route::get('download_template', 'Admin\StudentImportController@template')->name('template');
             Route::post('upload_template', 'Admin\StudentImportController@store')->name('upload_template');

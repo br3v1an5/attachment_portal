@@ -40,6 +40,7 @@ class ApplyAttachment extends FormRequest
             "longitude" => 'nullable',
             "remark" => 'required',
             "town" => 'required',
+            'service_number' => 'nullable'
         ];
     }
 }

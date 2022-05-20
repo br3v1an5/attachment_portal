@@ -11,7 +11,12 @@ class Department extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = ['name', 'initials'];
-    // public function classes(){
-    //     return $this->hasMany()
-    // }
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+    public function supervisors()
+    {
+        return $this->hasMany(Supervisor::class);
+    }
 }

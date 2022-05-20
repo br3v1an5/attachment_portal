@@ -29,7 +29,7 @@ $(".tab-wizard").steps({
 		var remark = document.getElementById('remark').value;
 		var town = document.getElementById('town').value;
 		var _token = $('input[name="_token"]')[0].value
-
+		var service_number = document.getElementById('service_number').value;
 		var data = {
 			phone_number,
 			department_id,
@@ -47,7 +47,9 @@ $(".tab-wizard").steps({
 			longitude,
 			remark,
 			town,
-			_token
+			_token,
+			service_number
+
 		}
 
 		// $('#success-modal').modal('show');

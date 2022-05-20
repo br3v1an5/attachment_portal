@@ -98,4 +98,10 @@ class DepartmentController extends Controller
         $department->delete();
         return redirect()->back()->with('warning', 'Department Deleted Successfully');
     }
+
+    public function students(Department $department)
+    {
+        $students = $department->students;
+        return view('admin.department.students', compact('students', 'department'));
+    }
 }

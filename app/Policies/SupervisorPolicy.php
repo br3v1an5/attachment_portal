@@ -41,7 +41,7 @@ class SupervisorPolicy
      */
     public function create(User $user)
     {
-        return  in_array($user->user_role, ['Admin', 'Super Admin']);
+        return  in_array($user->user_role, ['Admin', 'Super Admin', 'Hod']);
     }
 
     /**
@@ -53,7 +53,7 @@ class SupervisorPolicy
      */
     public function update(User $user, Supervisor $supervisor)
     {
-        return $user->user_role == 'Admin' || $user->id == $supervisor->user->id;;
+        return $user->user_role == 'Admin' || $user->user_role == 'Hod' || $user->id == $supervisor->user->id;;
     }
 
     /**

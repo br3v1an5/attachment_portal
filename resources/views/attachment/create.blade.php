@@ -27,9 +27,13 @@
                             <label>Select Department :</label>
                             <select class="custom-select form-control" id="department">
                                 <option value="" disabled>Select Department</option>
+                                @if(auth()->user()->department_id !=null)
+                                <option value="{{auth()->user()->department_id}}">{{App\Models\Department::find(auth()->user()->department_id)->name}}</option>
+                                @else
                                 @foreach($departments as $department)
                                 <option value="{{$department->id}}">{{$department->name}}</option>
                                 @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -41,7 +45,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Select you class:</label>
                             <select class="custom-select form-control" id="class">
@@ -52,10 +56,17 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Alternative Phone Number :</label>
                             <input type="text" class="form-control" id="alt_phone" name="alt_phone" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Service Number: <small>(NYS Students Only)</small></label>
+                            <input class="form-control" id="service_number" name="service_number" type="number">
                         </div>
                     </div>
                 </div>
@@ -108,7 +119,7 @@
                             <input class="form-control" placeholder="Select complition date " type="date" id="completion_date" name="completion_date">
                         </div>
                         <div class="form-group">
-                            <label>Organization Contact :</label>
+                            <label>Training Manager Contact :</label>
                             <input type="text" class="form-control" id="org_no" name="org_no">
                         </div>
                     </div>
@@ -149,7 +160,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Comments</label>
+                                <label>Comments , Any Challenges or Remarks</label>
                                 <textarea class="form-control" id="remark" name="remark"></textarea>
                             </div>
                         </div>

@@ -40,18 +40,18 @@
                     </ul>
                 </li>
 
-                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin']))
+                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin','Ilo','Hod']))
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Supervisors</span>
+                        <span class="micon dw dw-right-arrow1"></span><span class="mtext">Assessors</span>
                     </a>
                     <ul class="submenu">
-
-                        <li><a href="{{route('admin.supervisors.create')}}">New Supervisor</a></li>
-
-                        <li><a href="{{route('admin.supervisors.index')}}">View Supervisors</a></li>
-                        <li><a href="{{route('admin.allocate_supervisor_student')}}">Allocate Supervisors</a></li>
-                        <li><a href="{{route('admin.supervisor_student')}}">Students Supervisors</a></li>
+                        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin','Hod']))
+                        <li><a href="{{route('admin.supervisors.create')}}">New Assessor</a></li>
+                        @endif
+                        <li><a href="{{route('admin.supervisors.index')}}">View Assessors</a></li>
+                        @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin','Ilo']))<li><a href="{{route('admin.allocate_supervisor_student')}}">Allocate Assesors</a></li> @endif
+                        <li><a href="{{route('admin.supervisor_student')}}">Students Assessors</a></li>
 
                     </ul>
                 </li>
@@ -63,13 +63,15 @@
                     </a>
                     <ul class="submenu">
                         <li><a href="{{route('admin.towns.create')}}">Allocate Town Tokens</a></li>
+                        <li><a href="{{route('admin.settings.show')}}">Settings</a></li>
                         <li><a href="{{route('admin.attachments.index')}}">Received Applications</a></li>
                         <li><a href="{{route('admin.towns.view')}}">View Town Tokens</a></li>
+                        <li><a href="{{route('admin.students.pending')}}">Pending Applicants</a></li>
                         <li><a href="{{route('admin.graphs')}}">Charts</a></li>
                     </ul>
                 </li>
                 @endif
-
+                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Hod']))
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-right-arrow1"></span><span class="mtext">User Management</span>
@@ -83,6 +85,7 @@
                         @endif
                     </ul>
                 </li>
+                @endif
                 @endif
 
 

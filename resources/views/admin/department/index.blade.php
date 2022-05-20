@@ -13,6 +13,8 @@
     <strong>Success</strong> {{session()->get('warning')}}
 </div>
 @endif
+
+<h4>Departments List</h4>
 <div class="container-fluid table-responsive">
     <table class="table table-striped table-bordered table-hover  dt-responsive" id="thisTable">
         <thead>
@@ -21,6 +23,11 @@
                 <th>Name</th>
                 <th>Initials</th>
                 <th>Added On</th>
+                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Ilo']))
+                <th></th>
+                <th></th>
+                @endif
+
             </tr>
         </thead>
         <tbody>
@@ -30,6 +37,10 @@
                 <td>{{$department->name}}</td>
                 <td>{{$department->initials}}</td>
                 <td>{{$department->created_at}}</td>
+                @if(in_array(Auth::user()->user_role, ['Admin', 'Super Admin', 'Ilo']))
+                <td><a href="{{route('admin.department.students',$department->id)}}" class="btn btn-small btn-primary"> View Students</a></td>
+                <td><a href="{{route('admin.department.assesors',$department->id)}}" class="btn btn-small btn-success"> View Assesors</a></td>
+                @endif
                 <td>
                     <div style="display: flex;justify-content:space-between">
                         @can('update', $department)
@@ -42,7 +53,6 @@
                             <button class="btn btn-sm btn-danger">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                             </button>
-
                         </form>
                         @endcan
                     </div>

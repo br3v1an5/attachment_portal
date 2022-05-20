@@ -48,10 +48,15 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $name = $data['firstname'] . ' ' . $data['lastname'];
+        if ($data['role'] == 0) {
+            $password  =   Hash::make($data['reg_number'],);;
+        } else {
+            $password  = Hash::make('password');
+        }
         $user =  User::create([
             'name' => $name,
             'email' => $data['email'],
-            'password' => Hash::make('password'),
+            'password' => $password,
             'username' => $data['reg_number'],
             'department_id' => $data['department_id'],
             'role' => $data['role']

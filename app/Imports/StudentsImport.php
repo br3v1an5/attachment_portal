@@ -21,7 +21,8 @@ class StudentsImport implements ToModel, WithHeadingRow, WithValidation
             'name'     => $row['name'],
             'email'    => $row['email'],
             'password' => Hash::make($row['reg_number']),
-            'username' => $row['reg_number']
+            'username' => $row['reg_number'],
+            'department_id' => auth()->user()->department_id
         ]);
     }
 

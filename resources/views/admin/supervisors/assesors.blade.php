@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<h4>{{$department->name}} Assesors</h4>
 <div id="table">
     <div class="adv-table">
         <table class="table table-striped  dt-responsive" id="thisTable">
@@ -15,6 +16,7 @@
                     <th>Username</th>
                     <th>EMAIL</th>
                     <th>PHONE</th>
+                    <th>Department</th>
                     <th>Alternative Phone</th>
                 </tr>
             </thead>
@@ -26,6 +28,7 @@
                     <td>{{$supervisor->user->username}}</td>
                     <td>{{$supervisor->user->email}}</td>
                     <td>{{$supervisor->phone_number}}</td>
+                    <td>{{$supervisor->department ? $supervisor->department->name : '' }}</td>
                     <td>{{$supervisor->alt_phone}}</td>
                 </tr>
                 @endforeach

@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Supervisor Phone Number:</label>
+                        <label>Assessor Phone Number:</label>
                         <input type="text" class="form-control" required id="phone_number" name="phone_number">
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Supervisor Alternative Phone Number :</label>
+                        <label>Assessor Alternative Phone Number :</label>
                         <input type="text" class="form-control" data-required id="alt_phone" name="alt_phone" required>
                     </div>
                 </div>

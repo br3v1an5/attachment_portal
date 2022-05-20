@@ -115,4 +115,10 @@ class SupervisorController extends Controller
     {
         //
     }
+
+    public function assesors(Department $department)
+    {
+        $supervisors = $department->supervisors()->whereHas('user')->get();
+        return view('admin.supervisors.assesors', compact('supervisors', 'department'));
+    }
 }

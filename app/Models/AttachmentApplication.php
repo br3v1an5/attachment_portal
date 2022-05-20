@@ -22,6 +22,7 @@ class AttachmentApplication extends Model
         "longitude",
         "remark",
         "town",
+        'service_number'
     ];
 
 
