@@ -12,6 +12,7 @@ class Student extends Model
     use HasFactory;
     use SoftDeletes;
     use Notifiable;
+    protected $with = ['user'];
     protected $fillable = [
         "phone_number",
         "department_id",

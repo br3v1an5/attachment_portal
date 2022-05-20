@@ -34,7 +34,7 @@
 
         gtag('config', 'UA-119386393-1');
     </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGOjQvDJWYbysuwevnf7Cm-VHgbG1cFps"></script>
     <style type="text/css">
         #map {
             width: 900px;

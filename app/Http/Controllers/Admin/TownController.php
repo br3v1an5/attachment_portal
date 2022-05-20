@@ -80,4 +80,22 @@ class TownController extends Controller
         $town->delete();
         return redirect(route('admin.towns.view'))->with('warning', $name . ' Deleted Successfully');
     }
+
+    public function map()
+    {
+        $cordinates = AttachmentApplication::orderBy('created_at', 'desc')->with('student')->get(['latitude', 'longitude', 'student_id']);
+        // dd($cordinates);
+
+        $addresses = [];
+        foreach ($cordinates as $cordinate) {
+            $address = [
+                'longitude' => $cordinate->longitude,
+                'latitude' => $cordinate->latitude,
+                'name' => $cordinate->student->user->name
+            ];
+            array_push($addresses, $address);
+        }
+
+        return view('maps', compact('addresses'));
+    }
 }
